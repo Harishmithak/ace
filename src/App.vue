@@ -1,30 +1,61 @@
+
+
+
+<script>
+
+import Nav from './views/main/NavView.vue'
+import Footer from './views/main/FooterView.vue'
+// import Home from './views/HomeView.vue'
+
+export default{
+  
+components:{
+  Nav,
+  Footer
+}
+
+}
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+<Nav> </Nav>
+<router-view> </router-view>
+
+<Footer> </Footer>
+<!-- <Home> </Home> -->
+
+</template>
+<!-- 
+
+<template>
+  <div id="app">
+    <Nav> </Nav>
+    <router-view></router-view>
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-nav {
-  padding: 30px;
-}
+Vue.use(VueRouter);
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
 
-nav a.router-link-exact-active {
-  color: #42b983;
+import Nav from './views/NavView.vue'
+import Home from './views/HomeView.vue'
+
+const routes = [
+  { path: '/', component: Home }
+
+];
+
+const router = new VueRouter({ routes });
+
+export default {
+  name: 'App',
+  router,
+components:{
+  Nav
 }
-</style>
+};
+</script> -->
