@@ -131,18 +131,91 @@
 </div>
 
 
-<div>
+<div >
 
     <img style="position:relative; width: 100%;" src="@\assets\images\college\College-3.jpg"   id="getin">
 
+      <p id="tit" class="ms-m-0">Designer Uniforms</p>
+      <p id="by" class="signature">by</p>
+      <p id="ace" class="proximaThin logoName">acecraft</p>
+    
+      <button id="touch" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">GET IN TOUCH</button>
+
+
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <h5 class="modal-title" id="exampleModalLabel">Get your Uniforms designed and styled by Us!</h5>
+        <button type="button" class="btn-close float-start" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="container-fluid icons">
+                    <div class="row">
+                        <div class="col-6 ">
+                            <i class="fa-solid fa-user fa-2xl icon" style="color: #d2d0d0;"></i>
+                            <input type="text" id="firstname" placeholder="First Name">
+                       
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="lastname" placeholder="Last Name">
+        
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <i class="fa-solid fa-envelope fa-2xl icon" style="color: #d2d0d0;"></i>
+                        <input type="email" id="email" placeholder="Professional Email">
+     
+                    </div><br>
+                    <div class="row">
+                        <i class="fa-solid fa-building fa-2xl icon" style="color: #d2d0d0;"></i>
+                        <input type="text" id="org" placeholder="Organisation">
+
+                    </div><br>
+                    <div class="row">
+                        <i class="fa-solid fa-mobile fa-2xl icon" style="color: #d2d0d0;"></i>
+                        <input type="text" id="phone" placeholder="Phone No.">
+          
+                    </div>
+                    <p id="quan">Quantity required</p>
+                    <div id="choice">
+                        <input type="radio" id="quantity1" name="age" value="50">
+                        <label for="age1">10 - 50 sets</label><br>
+                        <input type="radio" id="quantity2" name="age" value="100">
+                        <label for="age2">51 - 100 sets</label><br>
+                        <input type="radio" id="quantity3" name="age" value="100+">
+                        <label for="age3">100+ sets</label><br><br>
+
+            </div>
+            <button type="button" id="btn2" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+                    </div>
+                   
+                </div>
+               
+
+    </div>
+  </div>
+</div> 
 
 
 
-</div>
+ 
+
+
+
+
+
+
 
 
 
 </template>
+
+
+
+
+
+
+
+
+
 
 
 <style>
@@ -305,6 +378,147 @@ margin-left: 600px;
 }
 body{
  overflow-x: hidden;   
+}
+/* #tit{
+    position: absolute;
+    margin-top: -300px;
+}
+#by{
+    position: absolute;
+}
+
+#ace{
+    position: absolute;
+}
+#a{
+    position: absolute;
+} */
+@font-face {
+    font-family: get ;
+    src: url();
+}
+#tit{
+    position: absolute;
+    font-family:mediums ;
+    font-size: 25px;
+    color: rgb(141, 139, 139);
+    margin-left: 600px;
+    margin-top: -300px;
+}
+
+#by{
+    position: absolute;
+    font-family: get;
+    color: rgb(172, 170, 170);
+    margin-left: 680px;
+    margin-top: -260px;
+
+}
+
+#ace{
+    position: absolute;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 5px;
+    font-size: 22px;
+    letter-spacing: 5px;
+    color: rgb(141, 139, 139);
+    margin-left: 620px;
+    margin-top: -240px;
+
+}  
+
+#touch{
+position: absolute;
+margin-left:-720px;
+margin-top: 280px;
+background: transparent;
+color: white;
+border-color: white;
+font-size: small;
+
+
+}
+
+
+.modal-title {
+    text-align: center;
+    margin-left: 50px;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px 10px 15px 46px;
+}
+
+#firstname,
+#lastname {
+    width: 200px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+}
+
+#email,
+#org,
+#phone,
+#quan {
+    font-size: 15px;
+    font-weight: 600;
+    color: #4d4d4d;
+   
+}
+
+#firstname {
+    margin-left: -11px;
+}
+
+#lastname {
+    margin-left: 7px;
+}
+
+#choice {
+    display: flex;
+    margin-top: -8px;
+}
+
+#quantity1,
+#quantity2,
+#quantity3 {
+    margin-top: -22px;
+    margin-right: 5px;
+    font-size: 15px;
+    color: #4d4d4d;
+}
+
+label {
+    margin-right: 20px;
+}
+
+#btn2 {
+    width: 470px;
+    border-radius: 100px;
+    margin-top: -50px;   
+}
+
+.icons i {
+    position: absolute;
+}
+
+.icon {
+    margin-top: 30px;
+    padding-right: 30px;
+}
+
+/* .container{
+    position: relative;
+
+} */
+.fa-envelope,
+.fa-building,
+.fa-mobile
+{
+    margin-left: -220px;
 }
 </style>
 
