@@ -16,12 +16,12 @@
   
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
-                      <router-link to="/" class='nav-link' id="school"  >SCHOOL</router-link>
+                      <router-link to="/school" class="nav-link" id="school"  >SCHOOL</router-link>
                       <!-- <a class="titlename" @click="handleClick" href="#">acecraft</a> -->
-                       <router-link class='nav-link' id="college" to="/college">COLLEGE</router-link>
-                      <router-link class='nav-link' id="enterprise" to="/enterprise">ENTERPRISE</router-link>
-                      <router-link class='nav-link notes' id="notes" to="/notes">NOTES</router-link>
-                      <router-link class='nav-link' id='areamask' to="/arien">ARIEN MASK</router-link>
+                       <router-link class="nav-link" id="college" to="/college">COLLEGE</router-link>
+                      <router-link class="nav-link" id="enterprise" to="/enterprise">ENTERPRISE</router-link>
+                      <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
+                      <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link>
                       <i class="fas fa-cog"></i>
     <i class="fas fa-shopping-cart"></i>
 
