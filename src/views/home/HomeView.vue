@@ -5,8 +5,9 @@
 over the common.</pre>
 
     </div>
-    <router-link to="/School" class="acecraftforcolleges"> ACECRAFT FOR COLLEGES</router-link>
+    <router-link to="/college" class="acecraftforcolleges"> ACECRAFT FOR COLLEGES
     <i class="fas fa-chevron-right arrow-right "></i>
+    </router-link>
 
   </div>
 
@@ -25,14 +26,14 @@ over the common.</pre>
 of Greatness.</pre>
 
     </div>
-    <router-link to="#" class="acecraftforschools"> ACECRAFT FOR SCHOOLS</router-link>
+    <router-link to="/school" class="acecraftforschools"> ACECRAFT FOR SCHOOLS</router-link>
     <i class="fas fa-chevron-right arrow-right1 "></i>
     <div class="overlay2">
       <pre>workwear
 Redefined.</pre>
 
     </div>
-    <router-link to="#" class="acecraftforenterprise"> ACECRAFT FOR ENTERPRISE</router-link>
+    <router-link to="/enterprise" class="acecraftforenterprise"> ACECRAFT FOR ENTERPRISE</router-link>
     <i class="fas fa-chevron-right arrow-right2 "></i>
   </div>
 </template>
@@ -235,6 +236,16 @@ padding: 15px;
   color: #000;
 }
 
+.arrow-right {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+  font-size: 15px;
+  animation: mymove 1s linear infinite;
+
+}
 
 
 </style>

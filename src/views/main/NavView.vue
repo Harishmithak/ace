@@ -23,8 +23,9 @@
                       <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
                       <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link>
                       <i class="fas fa-cog"></i>
-    <i class="fas fa-shopping-cart"></i>
-
+                      <router-link to="/cart">
+      <i class="fas fa-shopping-cart"></i>
+    </router-link>
          
                   </div>
               </div>
@@ -252,5 +253,8 @@ color: white;
 .fa-shopping-cart{
   margin-left: 100px;
   margin-top: 10px;
+}
+body{
+  overflow-x: hidden;
 }
 </style>
