@@ -3,8 +3,8 @@
 
 <script>
 
-import Nav from './views/main/NavView.vue'
-import Footer from './views/main/FooterView.vue'
+import Nav from './views/mainfolder/NavView.vue'
+import Footer from './views/mainfolder/FooterView.vue'
 // import Home from './views/HomeView.vue'
 
 export default{

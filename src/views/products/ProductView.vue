@@ -25,7 +25,7 @@
                                 </div>
                             </div>
 
-                            <h5 style="color: black; font-size: 13px; font-weight: 650;margin-left: -550px;" class="mt-2">{{
+                          <h5 style="color: black; font-size: 13px; font-weight: 650;margin-left: -550px;" class="mt-2">{{
                                 scl.prodname }}</h5>
                  
                         </router-link>

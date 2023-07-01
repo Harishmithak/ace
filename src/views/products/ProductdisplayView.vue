@@ -144,6 +144,7 @@ export default {
     },
     mounted() {
         this.fetchProductData();
+
     },
     methods: {
         fetchProductData() {
@@ -176,53 +177,56 @@ export default {
             this.amount = (price * quantity).toFixed(2);
         },
 
+
         addToCart() {
-  console.log('Add to Cart button clicked');
+            console.log('Add to Cart button clicked');
 
-  const product = {
-    id: this.id,
-    sclproductimg: this.sclproduct.sclproductimg,
-    prodname: this.sclproduct.prodname,
-    prodcode: this.sclproduct.prodcode,
-    brand: this.sclproduct.brand,
-    soldby: this.sclproduct.soldby,
-    dprice: this.sclproduct.dprice,
-    oprice: this.sclproduct.oprice,
-    discount: this.sclproduct.discount,
-    size: this.selectedSize,
-    quantity: parseInt(this.selectedQuantity),
-  };
+            const product = {
+                id: this.id,
+                sclproductimg: this.sclproduct.sclproductimg,
+                prodname: this.sclproduct.prodname,
+                prodcode: this.sclproduct.prodcode,
+                brand: this.sclproduct.brand,
+                soldby: this.sclproduct.soldby,
+                dprice: this.sclproduct.dprice,
+                oprice: this.sclproduct.oprice,
+                discount: this.sclproduct.discount,
+                size: this.selectedSize,
+                quantity: parseInt(this.selectedQuantity),
+                
+            };
 
-  this.cartItems = product;
+            this.cartItems = product;
 
-  this.id++;
+            this.id++;
 
-  this.saveCartItems();
-  window.alert('Product added to cart!');
-},
-
-    saveCartItems() {
-      const cartData = {
-        cartItems: this.cartItems,
-      };
-
-     
-      fetch(' http://localhost:3000/cartItems', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+            this.saveCartItems();
+            window.alert('Product added to cart!');
         },
-        body: JSON.stringify(cartData),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Error saving cart items');
-          }
-        })
-        .catch((error) => {
-          console.error('Error saving cart items:', error);
-        });
-    },
+
+        saveCartItems() {
+            const cartData = {
+                cartItems: this.cartItems,
+            };
+
+
+            fetch(' http://localhost:3000/cartItems', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(cartData),
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Error saving cart items');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error saving cart items:', error);
+                });
+        },
+
 
     }
 
