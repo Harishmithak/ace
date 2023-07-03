@@ -116,6 +116,10 @@
                         ADD TO CART
                     </button>
                 </div>
+
+
+
+                
                 <div class="col-6">
                     <button type="button" class="btn mt-5" style="background-color: black; color: white; font-size: 10px;">
                         BUY NOW
@@ -193,7 +197,7 @@ export default {
                 discount: this.sclproduct.discount,
                 size: this.selectedSize,
                 quantity: parseInt(this.selectedQuantity),
-                
+
             };
 
             this.cartItems = product;

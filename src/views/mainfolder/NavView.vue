@@ -58,7 +58,7 @@
         <router-link style="color: #978F8F; text-decoration: none;" to="/login">
           <li id="sign-in">Sign In &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
         </router-link>
-        <router-link style="color: #978F8F; text-decoration: none;" to="/reg">
+        <router-link style="color: #978F8F; text-decoration: none;" to="/register">
           <li id="register">Register &nbsp; | <i class="fa-solid fa-user-plus"></i> </li>
         </router-link>
         <a style="color: #978F8F; text-decoration: none;">

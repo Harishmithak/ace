@@ -80,6 +80,7 @@
   
 <script>
 export default {
+  name:'cartView',
   data() {
     return {
       cartItems: [],

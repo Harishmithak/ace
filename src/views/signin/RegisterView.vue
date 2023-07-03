@@ -30,15 +30,15 @@
           <div class="form-group">
             <input type="password" v-model="formData.password" class="form-control" placeholder="Password" required/>
   
-            <span v-if="vc$.password.$error">{{ vc$.password.$errors[0].$message }}</span>
+            <span v-if="vc$.password.$error">{{ vc$.password.$errors[0].$message }} {{ formData.password }}</span>
           </div>
          
 
           <div class="form-group">
-            <input type="password" v-model="formData.confirmPassword" class="form-control"
+            <input type="password" v-model="formData.confirm" class="form-control"
               placeholder="Confirm password" required/>
   
-              <span v-if="vc$.confirmPassword.$error">{{ vc$.confirmPassword.$errors[0].$message }}</span>
+              <span v-if="vc$.confirm.$error">{{ vc$.confirm.$errors[0].$message }} {{ formData.confirm }}</span>
            
           </div>
 
@@ -104,11 +104,12 @@
 </template>
 
 
+
 <script>
 import { useVuelidate } from '@vuelidate/core';
-import { required, email, minLength, maxLength, sameAs } from '@vuelidate/validators';
+import { required, email, minLength, maxLength } from '@vuelidate/validators';
 import { reactive, computed } from 'vue';
-
+import axios from 'axios';
 
 export default {
   setup() {
@@ -117,13 +118,15 @@ export default {
       lname: '',
       email: '',
       password: '',
-      confirmPassword: '',
+      confirm: '',
       accountType: '',
       dealershipName: '',
       dealershipCode: '',
       city: '',
       state: '',
-      gstnumber: ''
+      gstnumber: '',
+      // register:[]
+
     });
 
 
@@ -134,7 +137,8 @@ export default {
           lname: { required },
           email: { required, email },
           password: { required, minLength: minLength(6), maxLength: maxLength(10) },
-          confirmPassword: { required, sameAs: sameAs(() => this.formData.password) },
+      
+          confirm: { required},
           accountType: { required },
           dealershipName: { required },
           dealershipCode: { required },
@@ -158,16 +162,28 @@ export default {
   methods: {
     submitForm() {
       this.vc$.$validate();
-      if (!this.vc$.$error) {
-        alert("Form submitted successfully")
-      }
-      else {
+
+      if (!this.vc$.$error && this.formData.password === this.formData.confirm) {
+        axios.post('http://localhost:3000/register', this.formData)
+          .then(response => {
+            console.log(response.data);
+            alert('Form submitted successfully');
+          })
+          .catch(error => {
+            console.error(error);
+            alert('An error occurred while submitting the form');
+          });
+      } else {
         alert('Form validations failed');
       }
     }
   }
 };
-</script>
+</script> 
+
+
+
+
 
 <style scoped>
 .container2 {
