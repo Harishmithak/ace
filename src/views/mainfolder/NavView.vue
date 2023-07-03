@@ -25,7 +25,7 @@
             <!-- <div class="setting">
               <i class="fas fa-cog" ></i>
             </div> -->
- <div class="setting"  @click="showSettings = !showSettings">
+ <!-- <div class="setting"  @click="showSettings = !showSettings">
     <li class="companymenuli">
       <a class="alisting">
 
@@ -33,7 +33,7 @@
         <b class="caret"></b>
       </a>
       <ul class="ullist">
-        <router-link style="color: #978F8F; text-decoration: none;" to="/">
+        <router-link style="color: #978F8F; text-decoration: none;" to="/login">
           <li id="sign-in">Sign In &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
         </router-link>
         <router-link style="color: #978F8F; text-decoration: none;" to="/register">
@@ -47,8 +47,29 @@
         </a>
       </ul>
     </li>
+  </div> -->
+  <div class="setting" @mouseenter="showSettings = true" @mouseleave="showSettings = false">
+    <li class="companymenuli">
+      <a class="alisting">
+        <i class="fas fa-cog"></i>
+        <b class="caret"></b>
+      </a>
+      <ul class="ullist" v-show="showSettings">
+        <router-link style="color: #978F8F; text-decoration: none;" to="/login">
+          <li id="sign-in">Sign In &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
+        </router-link>
+        <router-link style="color: #978F8F; text-decoration: none;" to="/reg">
+          <li id="register">Register &nbsp; | <i class="fa-solid fa-user-plus"></i> </li>
+        </router-link>
+        <a style="color: #978F8F; text-decoration: none;">
+          <li id="order-status">Order Status &nbsp;</li>
+        </a>
+        <a style="color: #978F8F; text-decoration: none;">
+          <li id="contact">Contact &nbsp; | <i class="fas fa-comments"></i></li>
+        </a>
+      </ul>
+    </li>
   </div>
-
   
 
 
