@@ -148,6 +148,7 @@
 
 <script>
 export default {
+    name:'enterpriseView',
     data() {
         return {
             mens: [],
@@ -481,6 +482,9 @@ font-size: small;
   @font-face {
     font-family: thin1;
     src: url(C:\Users\cgvak\ace\src\assets\fonts\Fontspring-DEMO-proximanova-thin.otf);
+  }
+  #firstname{
+    margin-top: -70px;
   }
 
 </style>

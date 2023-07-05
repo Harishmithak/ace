@@ -9,7 +9,7 @@
           <div class="col-4">
             <img :src="cart.cartItems.sclproductimg" class="pimg" />
           </div>
-          <div class="col-3">
+          <div class="col-4">
             <div class="pdetails">
               <h4 class="pname">{{ cart.cartItems.prodname }}</h4>
               <p class="psize">Size: {{ cart.cartItems.size }}</p>
@@ -193,11 +193,12 @@ export default {
 }
 
 #quantity {
-  padding: 10px;
+  padding: 5px;
+  padding-top: 1px;
 }
 
-.pname {
+/* .pname {
   font-family: mediums;
-}
+} */
 </style>
   

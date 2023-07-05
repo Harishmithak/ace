@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 // import NotesView from '../views/notes/NotesView.vue'
 // import CollegeView from '../views/college/CollegeView.vue'
 
+
 const routes = [
   {
     path: '/',
@@ -55,8 +56,11 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: () => import( '../views/cart/CartView.vue')
+    component: () => import( '../views/cart/CartView.vue'),
+
+   
   },
+  
   {
     path: '/register',
     name: 'register',

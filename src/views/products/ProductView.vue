@@ -8,6 +8,49 @@
         </div>
 
 
+        <div class="container sclcontainer mb-3">
+    <div class="row">
+      <div class="col sclitem">
+        <button
+          type="button"
+          class="btn"
+          style="font-size: 20px; color: black; background: none"
+        >
+          SCHOOL
+          <span
+            class=""
+            style="color: grey; text-transform: lowercase; font-size: 15px; font-weight: 500"
+          >
+             -{{ this.sclproducts.length }} items 
+          </span>
+        </button>
+      </div>
+
+      <div class="col-md-3 sclitem1">
+        <div class="dropdown">
+          <select
+            style="font-size: 13px; box-shadow: 10px 10px 10px 2px grey; border: none; font-weight: 600"
+            class="form-control"
+            @change="handleSortChange"
+            :value="sortType"
+          >
+          <option value="sort"  >sort by</option>
+            <option value="Low to High">sort by: Low to High</option>
+            <option value="High to Low">sort by: High to Low</option>
+            <option value="Name Ascending - Descending">Name: Ascending - Descending</option>
+            <option value="name-desc">Name: Descending - Ascending</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
         <div class="row">
             <div class="col-md-4" v-for="scl in sclproducts " :key="scl.id">
 
@@ -32,13 +75,8 @@
                     </div>
                 </div>
 
-
-
-
-
             </div>
         </div>
-
 
 
     </div>
@@ -46,10 +84,14 @@
 
 <script>
 export default {
+    name:'productView',
     data() {
         return {
 
             sclproducts: [],
+            sortType: 'sort', 
+     
+          
 
         };
     },
@@ -57,6 +99,10 @@ export default {
 
         this.fetchproductData();
     },
+
+
+
+
     methods: {
         fetchproductData() {
             fetch('http://localhost:3000/sclproducts')
@@ -67,9 +113,12 @@ export default {
                 .catch((error) => {
                     console.error('Error fetching product data:', error);
                 });
-        }
+        },
+
+
+  },
     }
-}
+
 
 </script>
 
@@ -147,5 +196,11 @@ export default {
 
 body {
     overflow-x: hidden;
+}
+.sclitem{
+    margin-left: -500px;
+}
+.sclitem1{
+    margin-left: 300px;
 }
 </style>

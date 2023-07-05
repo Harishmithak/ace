@@ -112,6 +112,7 @@ import { reactive, computed } from 'vue';
 import axios from 'axios';
 
 export default {
+  name:'RegisterView',
   setup() {
     const formData = reactive({
       fname: '',

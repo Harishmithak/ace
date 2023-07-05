@@ -13,12 +13,12 @@
             <input v-model="password" class="w-100" type="password" placeholder="Password" />
           </div>
           <div class="d-flex justify-content-center mt-4">
-            <button class="bg-black text-white btn-size" type="submit">Login</button>
+         <router-link to="/">   <button class="bg-black text-white btn-size" type="submit">Login</button> </router-link>
           </div>
           <div class="d-flex justify-content-center mt-2">
             <p class="mt-3 text-center" style="font-size: 13px; color: #978F8F;">
               Doesn't have an account?
-              <router-link to="/register" class="text-black w-25">Register</router-link>
+              <router-link to="/" class="text-black w-25">Register</router-link>
             </p>
           </div>
           <p v-if="errorMessage" class="mt-3 text-center" style="font-size: 13px; color: red;">{{ errorMessage }}</p>
@@ -37,6 +37,7 @@
 // import {toast} from 'vue3-toastify';
 import axios from 'axios';
 export default {
+  name:'loginView',
   data() {
     return {
       username: '',

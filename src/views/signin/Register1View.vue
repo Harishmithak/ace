@@ -327,6 +327,7 @@
   
   <script>
   export default {
+    name:'registerVew',
     data() {
       return {
         fname: "",

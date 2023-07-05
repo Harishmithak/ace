@@ -11,7 +11,7 @@
                 {{ sclproduct.prodname }}
             </h5>
             <h5 class="pt-3" style="color: black; font-size: 14px;">
-                Product Code: {{ sclproduct.prodcode }}
+                Product Code: {{ sclproduct.prodcode}}
             </h5>
             <h5 style="color: black; font-size: 14px;">Brand: {{ sclproduct.brand }}</h5>
             <h5 style="color: black; font-size: 14px;">Sold by: {{ sclproduct.soldby }}</h5>
@@ -116,7 +116,7 @@
                         ADD TO CART
                     </button>
                 </div>
-
+            
 
 
                 
@@ -136,6 +136,7 @@
 <script>
 
 export default {
+    name:'productDisplay',
     data() {
         return {
             sclproduct: null,
@@ -167,8 +168,25 @@ export default {
         },
 
         handleSizeSelect(size) {
-            this.selectedSize = size;
-        },
+  this.selectedSize = size;
+  const codeWithoutSize = this.sclproduct.prodcode.replace(/\d+$/, '');
+  this.sclproduct.prodcode = codeWithoutSize + size.toString();
+  this.calculatePrice();
+  this.calculateDiscount();
+  
+},
+calculatePrice() {
+  const basePrice = parseFloat(this.sclproduct.dprice);
+  const sizeFactor = 10; 
+  this.sclproduct.dprice = (basePrice + sizeFactor).toFixed(2); 
+},
+
+calculateDiscount(){
+    const dis = parseFloat(this.sclproduct.discount);
+    const inc = 3;
+    this.sclproduct.discount=(dis + inc + '%OFF');
+
+},
 
         handleQuantitySelect(event) {
             this.selectedQuantity = event.target.value;
@@ -232,7 +250,8 @@ export default {
         },
 
 
-    }
+    },
+   
 
 };
 </script>

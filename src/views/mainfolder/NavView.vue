@@ -72,17 +72,12 @@
   </div>
   
 
-
-
-
-
-
             <router-link to="/cart">
               <i class="fas fa-shopping-cart">
                 
               </i>
             </router-link>
-
+            <span class="badge badge-light">{{ lastCartItemId }}</span>
 
           </div>
         </div>
@@ -93,17 +88,35 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+  name:'navbarView',
   data() {
     return {
-      showSettings: false
+      showSettings: false,
+      lastCartItemId: '',
     };
+  },
+  created() {
+    this.fetchCartItems();
+    setInterval(this.fetchCartItems, 2000); 
   },
   methods: {
     toggleSettings() {
       this.showSettings = !this.showSettings;
-    }
-  }
+    },
+    fetchCartItems() {
+  axios.get('http://localhost:3000/cartItems')
+    .then(response => {
+      const cartItems = response.data;
+      this.lastCartItemId = cartItems.length; // Update the lastCartItemId with the length of the cartItems array
+    })
+    .catch(error => {
+      console.error('Failed to fetch cart items:', error);
+    });
+}
+  },
+
 };
 </script>
 
@@ -227,7 +240,7 @@ nav a.router-link-exact-active {
 
  .companymenuli {
   margin-top: 5px;
-  margin-left: 260px;
+  margin-left: -150px;
 } 
 
   
@@ -344,11 +357,10 @@ body {
   margin-left: 290px;
   margin-top: 10PX;
 }
+ .companymenuli{
 
-.companymenuli{
-
-  margin-left: -200px;
-}
+  margin-left: -150px;
+} 
 .setting li ul {
   display: none;
   position: absolute;
@@ -374,4 +386,45 @@ body {
   font-size: 20px;
   font-weight: 400;
 }
+.badge{
+  border-radius:50px;
+  height:25px;
+  width: 25px;
+}
+
+.setting {
+  position: relative;
+}
+
+.setting ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -150%;
+  /* background-color: #fff; */
+  opacity: 0.9;
+  width: 50px;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.setting:hover ul {
+  display: block;
+}
+
+.setting ul li {
+  margin-bottom: 10px;
+}
+
+.setting ul li a {
+  color: #000;
+  text-decoration: none;
+  display: block;
+}
+
+.setting ul li a:hover {
+  background-color: #f2f2f2;
+}
+
 </style>
