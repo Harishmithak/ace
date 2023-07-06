@@ -164,7 +164,7 @@ export default {
     },
     methods: {
         fetchMensData() {
-            fetch('http://localhost:3000/mens')
+            fetch('https://acecraft-product-details.onrender.com/mens')
                 .then((response) => response.json())
                 .then((data) => {
                     this.mens = data;
@@ -174,7 +174,7 @@ export default {
                 });
         },
         fetchstepsData() {
-            fetch('http://localhost:3000/steps')
+            fetch('https://acecraft-product-details.onrender.com/steps')
                 .then((response) => response.json())
                 .then((data) => {
                     this.steps = data;
@@ -184,7 +184,7 @@ export default {
                 });
         },
         fetchfourData() {
-            fetch('http://localhost:3000/fourimgblock')
+            fetch('https://acecraft-product-details.onrender.com/fourimgblock')
                 .then((response) => response.json())
                 .then((data) => {
                     this.fourimgblock = data;

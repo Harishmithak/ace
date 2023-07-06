@@ -26,22 +26,7 @@
         </button>
       </div>
 
-      <div class="col-md-3 sclitem1">
-        <div class="dropdown">
-          <select
-            style="font-size: 13px; box-shadow: 10px 10px 10px 2px grey; border: none; font-weight: 600"
-            class="form-control"
-            @change="handleSortChange"
-            :value="sortType"
-          >
-          <option value="sort"  >sort by</option>
-            <option value="Low to High">sort by: Low to High</option>
-            <option value="High to Low">sort by: High to Low</option>
-            <option value="Name Ascending - Descending">Name: Ascending - Descending</option>
-            <option value="name-desc">Name: Descending - Ascending</option>
-          </select>
-        </div>
-      </div>
+     
     </div>
   </div>
 
@@ -52,7 +37,7 @@
 
 
         <div class="row">
-            <div class="col-md-4" v-for="scl in sclproducts " :key="scl.id">
+            <div class="col-md-4" v-for="scl in sclproducts" :key="scl.id">
 
                 <div class="cardss">
                     <div class="text-center">
@@ -89,7 +74,7 @@ export default {
         return {
 
             sclproducts: [],
-            sortType: 'sort', 
+       
      
           
 
@@ -103,9 +88,11 @@ export default {
 
 
 
+
+
     methods: {
         fetchproductData() {
-            fetch('http://localhost:3000/sclproducts')
+            fetch('https://acecraft-product-details.onrender.com/sclproducts')
                 .then((response) => response.json())
                 .then((data) => {
                     this.sclproducts = data;
@@ -116,7 +103,13 @@ export default {
         },
 
 
+    
+       
+
+
   },
+ 
+  
     }
 
 

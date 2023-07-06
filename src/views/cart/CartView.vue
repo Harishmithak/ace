@@ -1,10 +1,11 @@
 
 <template>
+
   <div>
     <h1>Your bag total is: {{ calculateTotalBagAmount() }}</h1>
     <hr>
     <div>
-      <div v-for="cart in cartItems" :key="cart.id" class="col-md-1 ls">
+      <div v-for="cart in cartItems" :key="cart.id"  >
         <div class="row">
           <div class="col-4">
             <img :src="cart.cartItems.sclproductimg" class="pimg" />
@@ -24,7 +25,7 @@
           </div>
           <div class="col-2 amount ">
             <p class="bamt"> ₹ {{ calculateAmount(cart) }}</p>
-            <!-- <span  @click="removeFromCart(cart)">Remove</span> -->
+           
             <a href="#" @click="removeFromCart(cart)" class="crem">Remove</a>
           </div>
 
@@ -37,12 +38,7 @@
 
   <div class="row">
     <div class="col-5">
-      <label style="font-weight: 400; font-size: 20px;">
-        Enter Coupon Code here:
-      </label>
-      <br />
-      <input style="padding-left: 150px;" type="text" v-model="couponCode" />
-      <button type="button" @click="applyCoupon">Apply!</button>
+
     </div>
     <div class="col-4">
       <h3 id="fi" style="color: gray;">Sub Total</h3>
@@ -67,7 +63,7 @@
             margin-right: 20px;
             padding-right: 50px;
             padding-left: 50px;
-          " type="button" @click="placeOrder">
+          " type="button" @click="makePayment">
           Place Order
         </button>
       </div>
@@ -76,22 +72,30 @@
 
     </div>
   </div><br>
+
+
 </template>
   
 <script>
+
+// import Swal from 'sweetalert2';
+
 export default {
   name:'cartView',
   data() {
     return {
       cartItems: [],
+      paymentHandler : " ",
+    
     };
   },
   mounted() {
     this.fetchcartData();
+    this.invokeStripe();
   },
   methods: {
     fetchcartData() {
-      fetch('http://localhost:3000/cartItems')
+      fetch('https://acecraft-product-details.onrender.com/cartItems')
         .then((response) => response.json())
         .then((data) => {
           this.cartItems = data;
@@ -112,7 +116,7 @@ export default {
     },
     updateQuantityInJson(cart) {
       cart.cartItems.amount = this.calculateAmount(cart);
-      fetch(`http://localhost:3000/cartItems/${cart.id}`, {
+      fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -143,7 +147,7 @@ export default {
       const index = this.cartItems.findIndex(item => item.id === cart.id);
       if (index !== -1) {
         this.cartItems.splice(index, 1);
-        fetch(`http://localhost:3000/cartItems/${cart.id}`, {
+        fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, {
           method: 'DELETE',
         })
           .then((response) => {
@@ -158,7 +162,49 @@ export default {
           });
       }
     },
+
+ makePayment() {
+
+ 
+        this.paymentHandler = window.StripeCheckout.configure({
+            key: "pk_test_51NQnV5SHLV5w9oaiT2gMfVQiVKkHykLPnblt5u4SHKqDDYTgSd1TfSWHpHSnMI6BDidJteaqwvecZyQc5yIa4Hun00rwq1mpaz",
+            locale: "auto",
+            token: function (stripeToken) {
+                console.log(stripeToken);
+                alert('Stripe token generated!',"Stripe Payment Alert");
+            
+            },
+        });
+        this.paymentHandler.open({
+            name: "Course",
+            description: "Order Details",
+           
+        });
+    },
+ invokeStripe() {
+        if (!window.document.getElementById("stripe-script")) {
+            const script = window.document.createElement("script");
+            script.id = "stripe-script";
+            script.type = "text/javascript";
+            script.src = "https://checkout.stripe.com/checkout.js";
+            script.onClick = () => {
+                this.paymentHandler = window.StripeCheckout.configure({
+                    key: "pk_test_51NQnV5SHLV5w9oaiT2gMfVQiVKkHykLPnblt5u4SHKqDDYTgSd1TfSWHpHSnMI6BDidJteaqwvecZyQc5yIa4Hun00rwq1mpaz",
+                    locale: "auto",
+                    token: function (stripeToken) {
+                        console.log(stripeToken);
+                        alert('Stripe Payment made successfull');
+             
+                    },
+                });
+            };
+            window.document.body.appendChild(script);
+        }
+    }
+
+
   },
+
 };
 </script>
   
@@ -166,16 +212,13 @@ export default {
 .pimg {
   height: 280px;
   width: 300px;
-  margin-left: 200px;
+  /* margin-left: 100px; */
 }
 
 .pdetails {
-  margin-left: 600px;
+ font-size: large;
 }
 
-.pquantity {
-  margin-left: 800px;
-}
 
 .amount {
   margin-left: 1100px;
@@ -197,8 +240,6 @@ export default {
   padding-top: 1px;
 }
 
-/* .pname {
-  font-family: mediums;
-} */
+
 </style>
   

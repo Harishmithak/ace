@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     fetchData() {
-      fetch('  http://localhost:3000/Blog')
+      fetch('https://acecraft-product-details.onrender.com/Blog')
         .then((response) => response.json())
         .then((data) => {
           this.notesindex = data;

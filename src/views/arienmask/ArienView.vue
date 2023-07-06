@@ -32,12 +32,7 @@
 text-decoration: none;
 
   }
-  /* #page{
-    margin-left:-1000px;
-  }
-  #error{
-    margin-left:-800px;
-  } */
+
   
   .goto:hover {
     color: white;

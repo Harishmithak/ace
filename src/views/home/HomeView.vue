@@ -129,17 +129,7 @@ padding: 15px;
   /* transition: transform 1s ease; */
 }
 
-/* .image-container img+img {
-  margin-left: 20px;
-} */
 
-/* .left-image:hover,
-.right-image:hover {
-  transform: scale(1.05); 
-  height:600px;
-  
-
-} */
 .image-container {
   position: relative;
 }

@@ -154,7 +154,7 @@ export default {
     methods: {
         fetchProductData() {
             const id = this.$route.params.id;
-            fetch(`http://localhost:3000/sclproducts/${id}`)
+            fetch(`https://acecraft-product-details.onrender.com/sclproducts/${id}`)
                 .then((response) => response.json())
                 .then((data) => {
                     this.sclproduct = data;
@@ -232,7 +232,7 @@ calculateDiscount(){
             };
 
 
-            fetch(' http://localhost:3000/cartItems', {
+            fetch('https://acecraft-product-details.onrender.com/cartItems', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

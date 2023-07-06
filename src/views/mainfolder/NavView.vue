@@ -22,32 +22,7 @@
             <router-link class="nav-link" id="enterprise" to="/enterprise">ENTERPRISE</router-link>
             <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
             <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link>
-            <!-- <div class="setting">
-              <i class="fas fa-cog" ></i>
-            </div> -->
- <!-- <div class="setting"  @click="showSettings = !showSettings">
-    <li class="companymenuli">
-      <a class="alisting">
-
-        <i class="fas fa-cog" ></i>
-        <b class="caret"></b>
-      </a>
-      <ul class="ullist">
-        <router-link style="color: #978F8F; text-decoration: none;" to="/login">
-          <li id="sign-in">Sign In &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
-        </router-link>
-        <router-link style="color: #978F8F; text-decoration: none;" to="/register">
-          <li id="register">Register  &nbsp; | <i class="fa-solid fa-user-plus"></i> </li>
-        </router-link>
-        <a style="color: #978F8F; text-decoration: none;">
-          <li id="order-status">Order Status &nbsp;</li>
-        </a>
-        <a style="color: #978F8F; text-decoration: none;">
-          <li id="contact">Contact  &nbsp; | <i class="fas fa-comments"></i></li>
-        </a>
-      </ul>
-    </li>
-  </div> -->
+         
   <div class="setting" @mouseenter="showSettings = true" @mouseleave="showSettings = false">
     <li class="companymenuli">
       <a class="alisting">
@@ -71,11 +46,11 @@
     </li>
   </div>
   
-
-            <router-link to="/cart">
-              <i class="fas fa-shopping-cart">
+  <router-link  to="/login" ><i class="fas fa-shopping-cart"></i> </router-link>
+            <router-link  v-if="isAuthenticated" to="">
+              <!-- <i class="fas fa-shopping-cart">
                 
-              </i>
+            </i>  -->
             </router-link>
             <span class="badge badge-light">{{ lastCartItemId }}</span>
 
@@ -89,6 +64,7 @@
 
 <script>
 import axios from 'axios';
+import {  mapGetters } from 'vuex';
 export default {
   name:'navbarView',
   data() {
@@ -106,15 +82,18 @@ export default {
       this.showSettings = !this.showSettings;
     },
     fetchCartItems() {
-  axios.get('http://localhost:3000/cartItems')
+  axios.get('https://acecraft-product-details.onrender.com/cartItems')
     .then(response => {
       const cartItems = response.data;
-      this.lastCartItemId = cartItems.length; // Update the lastCartItemId with the length of the cartItems array
+      this.lastCartItemId = cartItems.length; 
     })
     .catch(error => {
       console.error('Failed to fetch cart items:', error);
     });
 }
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated']),
   },
 
 };
@@ -388,7 +367,7 @@ body {
 }
 .badge{
   border-radius:50px;
-  height:25px;
+  height:20px;
   width: 25px;
 }
 

@@ -1,8 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/home/HomeView.vue'
-// import ArienView from '../views/arienmask/ArienView.vue'
-// import NotesView from '../views/notes/NotesView.vue'
-// import CollegeView from '../views/college/CollegeView.vue'
 
 
 const routes = [
@@ -58,6 +54,7 @@ const routes = [
     name: 'cart',
     component: () => import( '../views/cart/CartView.vue'),
 
+
    
   },
   
@@ -83,5 +80,6 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
 
 export default router

@@ -191,7 +191,7 @@ export default {
     },
     methods: {
         fetchschoolData() {
-            fetch(' http://localhost:3000/school')
+            fetch(' https://acecraft-product-details.onrender.com/school')
                 .then((response) => response.json())
                 .then((data) => {
                     this.school = data;

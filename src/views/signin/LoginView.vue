@@ -13,7 +13,7 @@
             <input v-model="password" class="w-100" type="password" placeholder="Password" />
           </div>
           <div class="d-flex justify-content-center mt-4">
-         <router-link to="/">   <button class="bg-black text-white btn-size" type="submit">Login</button> </router-link>
+      <button class="bg-black text-white btn-size" type="submit">Login</button> 
           </div>
           <div class="d-flex justify-content-center mt-2">
             <p class="mt-3 text-center" style="font-size: 13px; color: #978F8F;">
@@ -50,7 +50,7 @@ export default {
       event.preventDefault();
 
    
-      axios.get('http://localhost:3000/register')
+      axios.get('https://acecraft-product-details.onrender.com/register')
         .then(response => {
           const users = response.data;
 
@@ -66,10 +66,10 @@ export default {
                 password: this.password
               };
 
-              axios.post('http://localhost:3000/login', formData)
+              axios.post('https://acecraft-product-details.onrender.com/login', formData)
                 .then(() => {
          
-                  this.$router.push('/');
+                  this.$router.push('/cart');
                 })
                 .catch(error => {
                   console.error('Error storing form data:', error);
@@ -89,7 +89,10 @@ export default {
         .catch(error => {
           console.error('Error retrieving user data:', error);
         });
-    }
+    },
+    
+
+
   }
 };
 

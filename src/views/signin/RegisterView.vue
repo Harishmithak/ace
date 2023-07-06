@@ -165,7 +165,7 @@ export default {
       this.vc$.$validate();
 
       if (!this.vc$.$error && this.formData.password === this.formData.confirm) {
-        axios.post('http://localhost:3000/register', this.formData)
+        axios.post('https://acecraft-product-details.onrender.com/register', this.formData)
           .then(response => {
             console.log(response.data);
             alert('Form submitted successfully');

@@ -745,54 +745,6 @@
         "id": 3,
         "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f798f04705ab2ca347bb/images/5aa0f798f04705ab2ca347bc/5aa0f79ff04705ab2ca347d7/webp/5aa0f79ff04705ab2ca347d7-480x480.jpg",
         "prodname": "NHG Shirt [Girls, Grade 1-10]",
-        "prodcode": " NHISDWT18",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": 340,
-        "oprice": " ₹450",
-        "discount": "24% OFF",
-        "size": "",
-        "quantity": 1
-      },
-      "id": 13
-    },
-    {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
-        "prodname": "CIS Royal Day Wear (Grade 1-5)",
-        "prodcode": " NHISDWT",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": 340,
-        "oprice": " ₹450",
-        "discount": "24% OFF",
-        "size": "",
-        "quantity": 1
-      },
-      "id": 16
-    },
-    {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/627b614a77743f91a456432d/webp/front-view-nhg-shirt-girls-grade-11-12--480x480.jpg",
-        "prodname": "NHG County Shirt [Girls, Grade 11-12]",
-        "prodcode": " NHISDWT22",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": "350.00",
-        "oprice": " ₹450",
-        "discount": "27%OFF",
-        "size": "22",
-        "quantity": 1
-      },
-      "id": 17
-    },
-    {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f798f04705ab2ca347bb/images/5aa0f798f04705ab2ca347bc/5aa0f79ff04705ab2ca347d7/webp/5aa0f79ff04705ab2ca347d7-480x480.jpg",
-        "prodname": "NHG Shirt [Girls, Grade 1-10]",
         "prodcode": " NHISDWT",
         "brand": " ACECRAFT",
         "soldby": "Alchemy",
@@ -819,6 +771,102 @@
         "quantity": 2
       },
       "id": 19
+    },
+    {
+      "cartItems": {
+        "id": 3,
+        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/627b614a77743f91a456432d/webp/front-view-nhg-shirt-girls-grade-11-12--480x480.jpg",
+        "prodname": "NHG County Shirt [Girls, Grade 11-12]",
+        "prodcode": " NHISDWT36",
+        "brand": " ACECRAFT",
+        "soldby": "Alchemy",
+        "dprice": "350.00",
+        "oprice": " ₹450",
+        "discount": "27%OFF",
+        "size": "36",
+        "quantity": 2
+      },
+      "id": 20
+    },
+    {
+      "cartItems": {
+        "id": 3,
+        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d7044a72cc46b41ac7ca4/webp/hi-school-480x480.jpg",
+        "prodname": "CIS White Day Wear (Grade 9 & 10)",
+        "prodcode": " NHISDWT32",
+        "brand": " ACECRAFT",
+        "soldby": "Alchemy",
+        "dprice": "350.00",
+        "oprice": " ₹450",
+        "discount": "27%OFF",
+        "size": "32",
+        "quantity": 2
+      },
+      "id": 21
+    },
+    {
+      "cartItems": {
+        "id": 3,
+        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
+        "prodname": "CIS Royal Day Wear (Grade 1-5)",
+        "prodcode": " NHISDWT34",
+        "brand": " ACECRAFT",
+        "soldby": "Alchemy",
+        "dprice": "350.00",
+        "oprice": " ₹450",
+        "discount": "27%OFF",
+        "size": "34",
+        "quantity": 2
+      },
+      "id": 22
+    },
+    {
+      "cartItems": {
+        "id": 3,
+        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f01491c2e5ab32f33869/images/5aa0f01491c2e5ab32f3386a/5aa0f01e91c2e5ab32f338a4/webp/5aa0f01e91c2e5ab32f338a4-480x480.jpg",
+        "prodname": "NHG Jumpers [Girls, Grade 1-4]",
+        "prodcode": " NHISDWT20",
+        "brand": " ACECRAFT",
+        "soldby": "Alchemy",
+        "dprice": "350.00",
+        "oprice": " ₹450",
+        "discount": "27%OFF",
+        "size": "20",
+        "quantity": 2
+      },
+      "id": 23
+    },
+    {
+      "cartItems": {
+        "id": 3,
+        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
+        "prodname": "CIS Royal Day Wear (Grade 1-5)",
+        "prodcode": " NHISDWT28",
+        "brand": " ACECRAFT",
+        "soldby": "Alchemy",
+        "dprice": "360.00",
+        "oprice": " ₹450",
+        "discount": "30%OFF",
+        "size": "28",
+        "quantity": 3
+      },
+      "id": 24
+    },
+    {
+      "cartItems": {
+        "id": 3,
+        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f798f04705ab2ca347bb/images/5aa0f798f04705ab2ca347bc/5aa0f79ff04705ab2ca347d7/webp/5aa0f79ff04705ab2ca347d7-480x480.jpg",
+        "prodname": "NHG Shirt [Girls, Grade 1-10]",
+        "prodcode": " NHISDWT22",
+        "brand": " ACECRAFT",
+        "soldby": "Alchemy",
+        "dprice": "350.00",
+        "oprice": " ₹450",
+        "discount": "27%OFF",
+        "size": "22",
+        "quantity": 2
+      },
+      "id": 25
     }
   ],
   "register": [
@@ -907,6 +955,101 @@
       "username": "kharish@gmail.com",
       "password": "123456",
       "id": 14
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 15
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 16
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 17
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 18
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 19
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 20
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 21
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 22
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 23
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 24
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 25
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 26
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 27
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 28
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 29
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 30
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 31
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 32
+    },
+    {
+      "username": "kharish@gmail.com",
+      "password": "123456",
+      "id": 33
     }
   ]
 }
