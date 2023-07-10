@@ -1,10 +1,10 @@
+<!-- navbar -->
 
 <template>
   <div class='navbarfull col-lg-12 col-md-12 col-sm-12 col-xl-12 fixed-top'>
     <router-link class='titlename' to="/">acecraft</router-link>
 
-    <!-- <a ><span class="titlename" @click="handleClick"> acecraft </span></a>  -->
-    <!-- <a class="titlename" @click.prevent="handleClick" href="#">acecraft</a> -->
+
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" to="#"></a>
@@ -22,6 +22,8 @@
             <router-link class="nav-link" id="enterprise" to="/enterprise">ENTERPRISE</router-link>
             <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
             <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link>
+
+            <!-- settings icon  -->
          
   <div class="setting" @mouseenter="showSettings = true" @mouseleave="showSettings = false">
     <li class="companymenuli">
@@ -45,14 +47,20 @@
       </ul>
     </li>
   </div>
-  
+
+  <!-- cart icon -->
+  <!-- verifying from state management store -->
   <router-link  to="/login" ><i class="fas fa-shopping-cart"></i> </router-link>
-            <router-link  v-if="isAuthenticated" to="">
+            <router-link  v-if="isAuthenticated" to=""> 
               <!-- <i class="fas fa-shopping-cart">
                 
             </i>  -->
             </router-link>
-            <span class="badge badge-light">{{ lastCartItemId }}</span>
+
+
+<!-- add to cart badge -->
+
+            <span class="badge badge-light">{{ lastCartItemId }}</span> 
 
           </div>
         </div>
@@ -82,7 +90,7 @@ export default {
       this.showSettings = !this.showSettings;
     },
     fetchCartItems() {
-  axios.get('https://acecraft-product-details.onrender.com/cartItems')
+  axios.get('https://acecraft-product-details.onrender.com/cartItems') //fetching details from cartitems
     .then(response => {
       const cartItems = response.data;
       this.lastCartItemId = cartItems.length; 
@@ -230,19 +238,7 @@ nav a.router-link-exact-active {
   }
   
    
-  /* .setting li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    background-color: #fff;
-    opacity: 0.5;
-    width: 200px;
-    height:1600px;
-  }
-   */
-  /* .setting li:hover ul {
-    display: block;
-  } */
+ 
   
    .setting li ul li {
     display: block;
@@ -254,24 +250,7 @@ nav a.router-link-exact-active {
    
   
   }  
-  /* .setting li ul li a {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    color: #000;
-    text-decoration: none;
-    height:1600px;
-  
-    opacity: 1;
-  } */
-  
-  /* .setting li ul li a img {
-    width: 20px;
-    margin-right: 10px;
-    opacity: 0.5;
-    
-  
-  } */
+
   
   .setting li ul li a:hover {
     background-color: #f2f2f2;
@@ -315,12 +294,7 @@ nav a.router-link-exact-active {
   color: white;
 }
 
-/* .fa-cog {
-  margin-left:- 400px;
-  font-weight: 900;
-  color: white;
-  margin-top: 10px;
-}  */
+
 
 .fa-shopping-cart {
   margin-left:80px;

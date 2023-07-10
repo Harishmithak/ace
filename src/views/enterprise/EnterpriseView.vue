@@ -1,3 +1,5 @@
+<!-- enterprise page -->
+
 <template>
     <div>
         <img src="https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.files/honda.png" alt="HONDA IMAGE"
@@ -18,7 +20,7 @@
             <h6 class="whenwe text-center pt-3">When we designed our uniforms, we wore them to work every day.</h6>
             <h6 class="westill text-center pt-2">We still do. They are comfy, relaxed and designed to suit your workplace.
             </h6>
-
+<!-- Retrieving card details from json -->
             <div class="row">
                 <div class="col-md-4" v-for="item in mens" :key="item.id">
                     <div class="menscardbody">
@@ -33,6 +35,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- retrieving steps details from json  -->
 
         <div class="container-fluid stepsbackground">
 
@@ -66,6 +70,7 @@
 
         </div>
 
+<!-- retrieving images from json --> 
 
         <div class="container-fluid fourimgback">
 
@@ -76,7 +81,7 @@
 
 
             </div>
-
+<!-- modal in enterprise page -->
             <div class="designed">
                 <p id="tit" class="ms-m-0">Designer Uniforms</p>
       <p id="by" class="signature">by</p>

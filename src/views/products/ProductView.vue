@@ -9,40 +9,30 @@
 
 
         <div class="container sclcontainer mb-3">
-    <div class="row">
-      <div class="col sclitem">
-        <button
-          type="button"
-          class="btn"
-          style="font-size: 20px; color: black; background: none"
-        >
-          SCHOOL
-          <span
-            class=""
-            style="color: grey; text-transform: lowercase; font-size: 15px; font-weight: 500"
-          >
-             -{{ this.sclproducts.length }} items 
-          </span>
-        </button>
-      </div>
-
-     
-    </div>
-  </div>
+            <div class="row">
+                <div class="col sclitem">
+                    <button type="button" class="btn" style="font-size: 20px; color: black; background: none">
+                        SCHOOL
+                        <span class="" style="color: grey; text-transform: lowercase; font-size: 15px; font-weight: 500">
+                            <!-- length of the total products -->
+                            -{{ this.sclproducts.length }} items
+                        </span>
+                    </button>
+                </div>
 
 
-
-
-
-
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-4" v-for="scl in sclproducts" :key="scl.id">
 
                 <div class="cardss">
                     <div class="text-center">
+                        <!-- displaying  details of the product based on id and navigating to display page-->
+
                         <router-link :to="`/display/${scl.id}`" class="nav-link" id="school">
-                            
+
                             <div class="position-relative" style="margin-left: -550px;">
                                 <img :src="scl.sclproductimg" height="480" width="380" :alt="scl.id"
                                     class="mt-5 crd-img uniform-item-image" />
@@ -53,9 +43,9 @@
                                 </div>
                             </div>
 
-                          <h5 style="color: black; font-size: 13px; font-weight: 650;margin-left: -550px;" class="mt-2">{{
+                            <h5 style="color: black; font-size: 13px; font-weight: 650;margin-left: -550px;" class="mt-2">{{
                                 scl.prodname }}</h5>
-                 
+
                         </router-link>
                     </div>
                 </div>
@@ -69,14 +59,14 @@
 
 <script>
 export default {
-    name:'productView',
+    name: 'productView',
     data() {
         return {
 
             sclproducts: [],
-       
-     
-          
+
+
+
 
         };
     },
@@ -92,7 +82,7 @@ export default {
 
     methods: {
         fetchproductData() {
-            fetch('https://acecraft-product-details.onrender.com/sclproducts')
+            fetch('https://acecraft-product-details.onrender.com/sclproducts') //fetching details from school products
                 .then((response) => response.json())
                 .then((data) => {
                     this.sclproducts = data;
@@ -103,14 +93,14 @@ export default {
         },
 
 
-    
-       
 
 
-  },
- 
-  
-    }
+
+
+    },
+
+
+}
 
 
 </script>
@@ -190,10 +180,12 @@ export default {
 body {
     overflow-x: hidden;
 }
-.sclitem{
+
+.sclitem {
     margin-left: -500px;
 }
-.sclitem1{
+
+.sclitem1 {
     margin-left: 300px;
 }
 </style>

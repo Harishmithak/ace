@@ -1,4 +1,5 @@
 
+<!-- registration page  -->
 
 <template>
   <div class="container2" id="cont" style="margin-bottom: 250px;">
@@ -126,7 +127,7 @@ export default {
       city: '',
       state: '',
       gstnumber: '',
-      // register:[]
+   
 
     });
 
@@ -165,7 +166,7 @@ export default {
       this.vc$.$validate();
 
       if (!this.vc$.$error && this.formData.password === this.formData.confirm) {
-        axios.post('https://acecraft-product-details.onrender.com/register', this.formData)
+        axios.post('https://acecraft-product-details.onrender.com/register', this.formData) //posting the registration details to json 
           .then(response => {
             console.log(response.data);
             alert('Form submitted successfully');

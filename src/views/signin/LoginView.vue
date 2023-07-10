@@ -1,4 +1,5 @@
 
+<!-- sign in page  -->
 
 <template>
   <div class="container" id="cont">
@@ -13,7 +14,7 @@
             <input v-model="password" class="w-100" type="password" placeholder="Password" />
           </div>
           <div class="d-flex justify-content-center mt-4">
-      <button class="bg-black text-white btn-size" type="submit">Login</button> 
+            <button class="bg-black text-white btn-size" type="submit">Login</button>
           </div>
           <div class="d-flex justify-content-center mt-2">
             <p class="mt-3 text-center" style="font-size: 13px; color: #978F8F;">
@@ -34,10 +35,10 @@
 </template>
 
 <script>
-// import {toast} from 'vue3-toastify';
+
 import axios from 'axios';
 export default {
-  name:'loginView',
+  name: 'loginView',
   data() {
     return {
       username: '',
@@ -46,29 +47,27 @@ export default {
     };
   },
   methods: {
-    submitForm(event) {
+    submitForm(event) { //checking the details with register 
       event.preventDefault();
-
-   
       axios.get('https://acecraft-product-details.onrender.com/register')
         .then(response => {
           const users = response.data;
 
-        
+          //checking whether the username and password are matching
           const user = users.find(user => user.email === this.username);
 
           if (user) {
-           
+
             if (user.password === this.password) {
-            
+
               const formData = {
                 username: this.username,
                 password: this.password
               };
-
+              //posting the login details to json 
               axios.post('https://acecraft-product-details.onrender.com/login', formData)
                 .then(() => {
-         
+
                   this.$router.push('/cart');
                 })
                 .catch(error => {
@@ -76,30 +75,27 @@ export default {
                   this.errorMessage = 'An error occurred while storing form data. Please try again.';
                 });
             } else {
-            
-       this.errorMessage = 'Invalid password. Please try again.';
-            
+
+              this.errorMessage = 'Invalid password. Please try again.';
+
             }
           } else {
 
             this.errorMessage = 'User not found. Please check your username.';
-          
+
           }
         })
         .catch(error => {
           console.error('Error retrieving user data:', error);
         });
     },
-    
+
 
 
   }
 };
 
 </script>
-
-
-
 
 
 <style>

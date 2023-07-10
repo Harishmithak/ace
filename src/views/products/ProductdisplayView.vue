@@ -1,5 +1,5 @@
 
-
+<!-- product details display page -->
 <template>
     <div v-if="sclproduct" class="row">
         <div class="col-md-6 mt-2">
@@ -11,7 +11,7 @@
                 {{ sclproduct.prodname }}
             </h5>
             <h5 class="pt-3" style="color: black; font-size: 14px;">
-                Product Code: {{ sclproduct.prodcode}}
+                Product Code: {{ sclproduct.prodcode }}
             </h5>
             <h5 style="color: black; font-size: 14px;">Brand: {{ sclproduct.brand }}</h5>
             <h5 style="color: black; font-size: 14px;">Sold by: {{ sclproduct.soldby }}</h5>
@@ -108,6 +108,8 @@
                 }}</label>
             </div>
 
+            <!-- add to cart button -->
+
             <div class="row">
                 <div class="col-6">
                     <button type="button" class="btn mt-5"
@@ -116,10 +118,10 @@
                         ADD TO CART
                     </button>
                 </div>
-            
 
 
-                
+
+
                 <div class="col-6">
                     <button type="button" class="btn mt-5" style="background-color: black; color: white; font-size: 10px;">
                         BUY NOW
@@ -136,7 +138,7 @@
 <script>
 
 export default {
-    name:'productDisplay',
+    name: 'productDisplay',
     data() {
         return {
             sclproduct: null,
@@ -154,7 +156,7 @@ export default {
     methods: {
         fetchProductData() {
             const id = this.$route.params.id;
-            fetch(`https://acecraft-product-details.onrender.com/sclproducts/${id}`)
+            fetch(`https://acecraft-product-details.onrender.com/sclproducts/${id}`) //fetching details from sclproducts based on id
                 .then((response) => response.json())
                 .then((data) => {
                     this.sclproduct = data;
@@ -168,25 +170,25 @@ export default {
         },
 
         handleSizeSelect(size) {
-  this.selectedSize = size;
-  const codeWithoutSize = this.sclproduct.prodcode.replace(/\d+$/, '');
-  this.sclproduct.prodcode = codeWithoutSize + size.toString();
-  this.calculatePrice();
-  this.calculateDiscount();
-  
-},
-calculatePrice() {
-  const basePrice = parseFloat(this.sclproduct.dprice);
-  const sizeFactor = 10; 
-  this.sclproduct.dprice = (basePrice + sizeFactor).toFixed(2); 
-},
+            this.selectedSize = size;
+            const codeWithoutSize = this.sclproduct.prodcode.replace(/\d+$/, '');
+            this.sclproduct.prodcode = codeWithoutSize + size.toString(); //to change product code
+            this.calculatePrice(); //to change product price
+            this.calculateDiscount(); //to change product discount
 
-calculateDiscount(){
-    const dis = parseFloat(this.sclproduct.discount);
-    const inc = 3;
-    this.sclproduct.discount=(dis + inc + '%OFF');
+        },
+        calculatePrice() {
+            const basePrice = parseFloat(this.sclproduct.dprice);
+            const sizeFactor = 10;
+            this.sclproduct.dprice = (basePrice + sizeFactor).toFixed(2);
+        },
 
-},
+        calculateDiscount() {
+            const dis = parseFloat(this.sclproduct.discount);
+            const inc = 3;
+            this.sclproduct.discount = (dis + inc + '%OFF');
+
+        },
 
         handleQuantitySelect(event) {
             this.selectedQuantity = event.target.value;
@@ -232,7 +234,7 @@ calculateDiscount(){
             };
 
 
-            fetch('https://acecraft-product-details.onrender.com/cartItems', {
+            fetch('https://acecraft-product-details.onrender.com/cartItems', { //posting the details of the product to cartitems when add to cart button is clicked
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -251,7 +253,7 @@ calculateDiscount(){
 
 
     },
-   
+
 
 };
 </script>

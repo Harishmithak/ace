@@ -1,3 +1,5 @@
+
+<!-- home page -->
 <template>
   <div class="background-image-container">
     <div class="overlay">
@@ -14,7 +16,7 @@ over the common.</pre>
   <div class="image-container">
     <div class="bg-image hover-zoom">
 
-
+<!-- background image -->
       <img src="https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.files/home3.jpg" alt="Left Image"
         class="left-image ">
     </div>
@@ -45,7 +47,7 @@ Redefined.</pre>
   background-position: center;
   width: 100%;
   height: 650px;
-  /* margin-top: 10px; */
+
 }
 
 .background-image-container {

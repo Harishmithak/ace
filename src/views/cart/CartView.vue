@@ -1,11 +1,12 @@
 
+<!-- add to cart page -->
 <template>
-
+  <!-- retrieving from cartItems json -->
   <div>
     <h1>Your bag total is: {{ calculateTotalBagAmount() }}</h1>
     <hr>
     <div>
-      <div v-for="cart in cartItems" :key="cart.id"  >
+      <div v-for="cart in cartItems" :key="cart.id">
         <div class="row">
           <div class="col-4">
             <img :src="cart.cartItems.sclproductimg" class="pimg" />
@@ -25,7 +26,7 @@
           </div>
           <div class="col-2 amount ">
             <p class="bamt"> ₹ {{ calculateAmount(cart) }}</p>
-           
+            <!-- remove cart -->
             <a href="#" @click="removeFromCart(cart)" class="crem">Remove</a>
           </div>
 
@@ -59,6 +60,9 @@
             Continue Shopping
           </button>
         </router-link>
+
+
+
         <button style="
             margin-right: 20px;
             padding-right: 50px;
@@ -72,21 +76,19 @@
 
     </div>
   </div><br>
-
-
 </template>
   
 <script>
 
-// import Swal from 'sweetalert2';
+
 
 export default {
-  name:'cartView',
+  name: 'cartView',
   data() {
     return {
       cartItems: [],
-      paymentHandler : " ",
-    
+      paymentHandler: " ",
+
     };
   },
   mounted() {
@@ -95,7 +97,7 @@ export default {
   },
   methods: {
     fetchcartData() {
-      fetch('https://acecraft-product-details.onrender.com/cartItems')
+      fetch('https://acecraft-product-details.onrender.com/cartItems') //fetch cart details
         .then((response) => response.json())
         .then((data) => {
           this.cartItems = data;
@@ -116,7 +118,7 @@ export default {
     },
     updateQuantityInJson(cart) {
       cart.cartItems.amount = this.calculateAmount(cart);
-      fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, {
+      fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, { //update cart 
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -147,8 +149,7 @@ export default {
       const index = this.cartItems.findIndex(item => item.id === cart.id);
       if (index !== -1) {
         this.cartItems.splice(index, 1);
-        fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, {
-          method: 'DELETE',
+        fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, { //remove cart
         })
           .then((response) => {
             if (response.ok) {
@@ -162,44 +163,45 @@ export default {
           });
       }
     },
+    // payment method 
+    makePayment() {
 
- makePayment() {
 
- 
-        this.paymentHandler = window.StripeCheckout.configure({
+      this.paymentHandler = window.StripeCheckout.configure({
+        //getting keys from stripe
+        key: "pk_test_51NQnV5SHLV5w9oaiT2gMfVQiVKkHykLPnblt5u4SHKqDDYTgSd1TfSWHpHSnMI6BDidJteaqwvecZyQc5yIa4Hun00rwq1mpaz",
+        locale: "auto",
+        token: function (stripeToken) {
+          console.log(stripeToken);
+          alert('Stripe token generated!', "Stripe Payment Alert");
+
+        },
+      });
+      this.paymentHandler.open({
+        name: "Course",
+        description: "Order Details",
+
+      });
+    },
+    invokeStripe() {
+      if (!window.document.getElementById("stripe-script")) {
+        const script = window.document.createElement("script");
+        script.id = "stripe-script";
+        script.type = "text/javascript";
+        script.src = "https://checkout.stripe.com/checkout.js";
+        script.onClick = () => {
+          this.paymentHandler = window.StripeCheckout.configure({
             key: "pk_test_51NQnV5SHLV5w9oaiT2gMfVQiVKkHykLPnblt5u4SHKqDDYTgSd1TfSWHpHSnMI6BDidJteaqwvecZyQc5yIa4Hun00rwq1mpaz",
             locale: "auto",
             token: function (stripeToken) {
-                console.log(stripeToken);
-                alert('Stripe token generated!',"Stripe Payment Alert");
-            
+              console.log(stripeToken);
+              alert('Stripe Payment made successfull');
+
             },
-        });
-        this.paymentHandler.open({
-            name: "Course",
-            description: "Order Details",
-           
-        });
-    },
- invokeStripe() {
-        if (!window.document.getElementById("stripe-script")) {
-            const script = window.document.createElement("script");
-            script.id = "stripe-script";
-            script.type = "text/javascript";
-            script.src = "https://checkout.stripe.com/checkout.js";
-            script.onClick = () => {
-                this.paymentHandler = window.StripeCheckout.configure({
-                    key: "pk_test_51NQnV5SHLV5w9oaiT2gMfVQiVKkHykLPnblt5u4SHKqDDYTgSd1TfSWHpHSnMI6BDidJteaqwvecZyQc5yIa4Hun00rwq1mpaz",
-                    locale: "auto",
-                    token: function (stripeToken) {
-                        console.log(stripeToken);
-                        alert('Stripe Payment made successfull');
-             
-                    },
-                });
-            };
-            window.document.body.appendChild(script);
-        }
+          });
+        };
+        window.document.body.appendChild(script);
+      }
     }
 
 
@@ -212,11 +214,11 @@ export default {
 .pimg {
   height: 280px;
   width: 300px;
-  /* margin-left: 100px; */
+
 }
 
 .pdetails {
- font-size: large;
+  font-size: large;
 }
 
 
@@ -239,7 +241,5 @@ export default {
   padding: 5px;
   padding-top: 1px;
 }
-
-
 </style>
   

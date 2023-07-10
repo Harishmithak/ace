@@ -1,5 +1,9 @@
+
+<!-- school page  -->
 <template>
     <div>
+        <!-- routing to product page  -->
+
         <router-link to="/product">
             <div class="row">
                 <div v-for="logo in school" :key="logo.id" class="col-md-1 ls">
@@ -86,6 +90,7 @@
             </div>
         </div>
 
+<!-- modal in school page  -->
 
         <div class="main3">
             <div class="text3">
@@ -191,7 +196,7 @@ export default {
     },
     methods: {
         fetchschoolData() {
-            fetch(' https://acecraft-product-details.onrender.com/school')
+            fetch(' https://acecraft-product-details.onrender.com/school') //fetching logo details from school
                 .then((response) => response.json())
                 .then((data) => {
                     this.school = data;
