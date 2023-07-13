@@ -130,7 +130,7 @@ export default {
 <template>
   <div class="navbarfull col-lg-12 col-md-12 col-sm-12 col-xl-12 fixed-top">
     <router-link class="titlename" to="/">acecraft</router-link>
-
+<div class="newadd">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" to="#"></a>
@@ -141,11 +141,16 @@ export default {
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
+            <div v-if="isLoggedIn && userType === 'admin'">
+            <router-link class="nav-link" id="admin" to="/admin">ADMIN</router-link> </div>
             <router-link to="/school" class="nav-link" id="school">SCHOOL</router-link>
             <router-link class="nav-link" id="college" to="/college">COLLEGE</router-link>
             <router-link class="nav-link" id="enterprise" to="/enterprise">ENTERPRISE</router-link>
             <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
             <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link>
+            <!-- <div v-if="isLoggedIn && userType === 'admin'"> -->
+           
+    <!-- </div> -->
 
             <div class="setting" @mouseenter="showSettings = true" @mouseleave="showSettings = false">
               <li class="companymenuli">
@@ -177,6 +182,7 @@ export default {
             </div>
 
             <span @click="goToShoppingCart">
+       
               <i class="fas fa-shopping-cart"></i>
             </span>
 
@@ -186,14 +192,15 @@ export default {
       </div>
     </nav>
   </div>
+</div>
 </template>
 
 <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
 // import { mapGetters, mapMutations } from 'vuex';
-import { mapGetters, mapActions } from 'vuex';
-
+import {  mapActions } from 'vuex';
+import { mapState } from 'vuex';
 export default {
   name: 'navbarView',
   data() {
@@ -238,11 +245,12 @@ export default {
         });
     },
     goToShoppingCart() {
-      if (this.isLoggedIn) {
-        this.$router.push('/cart');
-      } else {
-        this.$router.push('/login');
-      }
+      this.$router.push('/cart');
+      // if (this.isLoggedIn) {
+      //   this.$router.push('/cart');
+      // } else {
+      //   this.$router.push('/login');
+      // }
       // else{
       //   this.$router.push('/login');
       // }
@@ -306,7 +314,8 @@ export default {
 
   },
   computed: {
-    ...mapGetters(['isLoggedIn'])
+    // ...mapGetters(['isLoggedIn'])
+    ...mapState(['isLoggedIn', 'userType'])
   }
 }
 
@@ -332,7 +341,7 @@ export default {
 }
 
 nav {
-  padding: 30px;
+  padding: 0px;
 }
 
 nav a {
@@ -596,5 +605,11 @@ body {
 
 .setting ul li a:hover {
   background-color: #f2f2f2;
+}
+.newadd{
+  margin-left: -100px;
+}
+#admin{
+  color:#fff;
 }
 </style>

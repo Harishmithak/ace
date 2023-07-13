@@ -92,6 +92,19 @@
               <span v-if="vc$.gstnumber.$error">{{ vc$.gstnumber.$errors[0].$message }}</span>
            
           </div>
+          <div class="form-group">
+            <label>
+              <input type="radio" v-model="formData.userType" value="user" />
+           User
+            </label>
+            <label>
+              <input type="radio" v-model="formData.userType" value="admin" />
+            Admin
+            </label>
+  
+              <span v-if="vc$.userType.$error">{{ vc$.accountType.$errors[0].$message }}</span>
+           
+          </div>
 
           <button class="bg-black text-white" type="submit" @click="submitForm">Register</button>
           <p class="mt-3 text-center" style="font-size: 13px; color: #978F8F;">
@@ -128,7 +141,7 @@ export default {
       city: '',
       state: '',
       gstnumber: '',
-   
+   userType:'',
 
     });
 
@@ -148,7 +161,7 @@ export default {
           city: { required },
           state: { required },
           gstnumber: { required },
-      
+          userType:{required},
       };
     });
 

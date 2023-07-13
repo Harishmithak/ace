@@ -726,17 +726,17 @@
       "quantity": "0"
     },
     {
-      "id": 44,
-      "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/627bd8ca3f76019779cffc21/webp/sports-shorts-480x480.jpg",
-      "prodname": "NHG Belt [Boys, Grade 5-12]",
-      "prodcode": " NHISDWT",
-      "brand": " ACECRAFT",
-      "soldby": "Alchemy",
-      "dprice": 370,
-      "oprice": " ₹450",
-      "discount": "24% OFF",
+      "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/627bd600820ea897cb5a5cfc/webp/day-wear-polos-480x480.jpg",
+      "prodname": "shirt",
+      "prodcode": "ace",
+      "brand": "acecraft",
+      "soldby": "craft",
+      "dprice": "345",
+      "oprice": "567",
+      "discount": "12",
       "size": "0",
-      "quantity": "0"
+      "quantity": "0",
+      "id": 44
     }
   ],
   "cartItems": [
@@ -882,8 +882,23 @@
       "city": "trichy",
       "state": "tamilnadu",
       "gstnumber": "123456",
-      "id": 1,
-      "login": 1
+      "userType": "user",
+      "id": 1
+    },
+    {
+      "fname": "harita",
+      "lname": "N",
+      "email": "harita@gmail.com",
+      "password": "123456",
+      "confirm": "123456",
+      "accountType": "school",
+      "dealershipName": "hari",
+      "dealershipCode": "123456",
+      "city": "coimbatore",
+      "state": "Tamilnadu",
+      "gstnumber": "123456",
+      "userType": "admin",
+      "id": 2
     }
   ],
   "login": [

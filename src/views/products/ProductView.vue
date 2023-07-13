@@ -22,11 +22,29 @@
                 </div>
 
 
+
+
+
+
+    <div class="col sort">
+      <select v-model="sortOption" class="form-select" @change="sortProducts">
+        <option value="">Sort by</option>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+        <option value="priceHigh">Price High to Low</option>
+        <option value="priceLow">Price Low to High</option>
+      </select>
+    </div>
+
+
+
+
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-4" v-for="scl in sclproducts" :key="scl.id">
+            <!-- <div class="col-md-4" v-for="scl in sclproducts" :key="scl.id"> -->
+                <div class="col-md-4" v-for="scl in sortedProducts" :key="scl.id">
 
                 <div class="cardss">
                     <div class="text-center">
@@ -66,6 +84,7 @@ export default {
     data() {
         return {
             sclproducts: [],
+            sortOption: ''
         };
     },
     mounted() {
@@ -75,7 +94,7 @@ export default {
 
     methods: {
         fetchproductData() {
-            fetch('https://acecraft-product-details.onrender.com/sclproducts') //fetching details from school products
+            fetch('http://localhost:3000/sclproducts') //fetching details from school products
                 .then((response) => response.json())
                 .then((data) => {
                     this.sclproducts = data;
@@ -84,8 +103,37 @@ export default {
                     console.error('Error fetching product data:', error);
                 });
         },
+        sortProducts() {
+
+    this.sclproducts = this.sortedProducts;
+  },
 
     },
+    computed: {
+  sortedProducts() {
+    let sorted = [...this.sclproducts];
+
+    switch (this.sortOption) {
+      case 'asc':
+        sorted.sort((a, b) => a.prodname.localeCompare(b.prodname));
+        break;
+      case 'desc':
+        sorted.sort((a, b) => b.prodname.localeCompare(a.prodname));
+        break;
+      case 'priceHigh':
+        sorted.sort((a, b) => b.dprice - a.dprice);
+        break;
+      case 'priceLow':
+        sorted.sort((a, b) => a.dprice - b.dprice);
+        break;
+      default:
+        // Default order (no sorting)
+        break;
+    }
+
+    return sorted;
+  }
+}
 }
 
 </script>
@@ -167,10 +215,11 @@ body {
 }
 
 .sclitem {
-    margin-left: -500px;
+    margin-left: -100px;
 }
 
-.sclitem1 {
-    margin-left: 300px;
+.sort{
+    margin-left: 600px;
+    width:100px;
 }
 </style>

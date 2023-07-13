@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store';
 
 // import axios from 'axios';
 
@@ -56,27 +57,17 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: () => import('../views/cart/CartView.vue'),
-// beforeEnter(){
-//   axios
-//   .get('http://localhost:3000/register?login_like=1')
-//   .then(response => {
-//     const users = response.data;
-
-//     const login = users.find(login => login.login === 1);
-
-//     if (login) {
-//       this.$router.push('/cart');
-//     } else {
-//       this.$router.push('/login');
-//     }
-
-//   }
-//   )
- 
-// },
-
-
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLoggedIn) {
+        next( );
+      } else {
+        next('/login');
+      }
+    }
   },
+
+
+  
 
   {
     path: '/register',
@@ -92,6 +83,16 @@ const routes = [
     path: '/reg',
     name: 'reg',
     component: () => import('../views/signin/Register1View.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/admin/AdminView.vue')
+  },
+  {
+    path: '/add',
+    name: 'add',
+    component: () => import('../views/slot/SlotView.vue')
   },
 
 ]

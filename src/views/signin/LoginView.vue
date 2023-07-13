@@ -13,6 +13,14 @@
           <div class="form-group ms-1 pt-3">
             <input v-model="password" class="w-100" type="password" placeholder="Password" />
           </div>
+          <div class="form-group ms-1 pt-3">
+
+            <select v-model="userType"  class=" w-100 form-select">
+
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
           <div class="d-flex justify-content-center mt-4">
             <button class="bg-black text-white btn-size" type="submit">Login</button>
           </div>
@@ -34,75 +42,7 @@
   </div>
 </template>
 
-<!-- <script>
-// import { mapMutations } from 'vuex';
 
-import axios from 'axios';
-export default {
-  name: 'loginView',
-  data() {
-    return {
-      username: '',
-      password: '',
-      errorMessage: ''
-    };
-  },
-  methods: {
-    // ...mapMutations(['setLoginStatus']),
-    submitForm(event) { //checking the details with register 
-      event.preventDefault();
-      axios.get('http://localhost:3000/register')
-        .then(response => {
-          const users = response.data;
-
-          //checking whether the username and password are matching
-          const user = users.find(user => user.email === this.username);
-
-          if (user) {
-
-            if (user.password === this.password) {
-
-              const formData = {
-                username: this.username,
-                password: this.password
-              };
-              //posting the login details to json 
-              axios.post('http://localhost:3000/login', formData)
-                .then(() => {
-                  // this.setLoginStatus(true);
-                  this.$router.push('/cart');
-                })
-                .catch(error => {
-                  console.error('Error storing form data:', error);
-                  this.errorMessage = 'An error occurred while storing form data. Please try again.';
-                });
-            } else {
-
-              this.errorMessage = 'Invalid password. Please try again.';
-
-            }
-          } else {
-
-            this.errorMessage = 'User not found. Please check your username.';
-
-          }
-        })
-        .catch(error => {
-          console.error('Error retrieving user data:', error);
-        });
-
-
-
-
-
-    },
-
-
-
-  }
-};
-
-</script> -->
 <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -114,7 +54,9 @@ export default {
     return {
       username: '',
       password: '',
-      errorMessage: ''
+      errorMessage: '',
+      userType: 'user'
+      
     };
   },
   methods: {
@@ -131,57 +73,29 @@ export default {
           const user = users.find(user => user.email === this.username);
 
           if (user) {
-            if (user.password === this.password){
+            if (user.password === this.password ){
 
-      this.login()
+      // this.login()
+      this.login(this.userType)
         .then(() => {
-       
+          
+          // Swal.fire('login successfull as user');
+
+          if (this.userType==='user' && user.userType==='user' ) {
           this.$router.push('/cart');
-          Swal.fire('login successfull');
+        }
+        else if(this.userType==='admin' && user.userType==='admin' ) {
+          // Swal.fire('login successfull as user');
+ 
+                    this.$router.push('/admin');
+                  }
+      
         })}
         
       }
    
       })}
-  //   submitForm(event) {
-  //     Swal.fire('login successfull');
-  //     event.preventDefault();
 
-  //     axios
-  //       .get('http://localhost:3000/register')
-  //       .then(response => {
-  //         const users = response.data;
-
-  //         const user = users.find(user => user.email === this.username);
-
-  //         if (user) {
-  //           if (user.password === this.password) {
-  //             const formData = {
-  //               ...user, // Keep existing user data
-  //               login: 1 // Update the login status to 1 by default
-  //             };
-
-  //             axios
-  //               .put(`http://localhost:3000/register/${user.id}`, formData) // Use PUT request to update the user data
-  //               .then(() => {
-  //                 this.$router.push('/cart');
-  //               })
-  //               .catch(error => {
-  //                 console.error('Error updating user data:', error);
-  //                 this.errorMessage = 'An error occurred while updating user data. Please try again.';
-  //               });
-  //           } else {
-  //             this.errorMessage = 'Invalid password. Please try again.';
-  //           }
-  //         } else {
-  //           this.errorMessage = 'User not found. Please check your username.';
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.error('Error retrieving user data:', error);
-  //       });
-  //   }
-  // }
 }}
 </script>
 
