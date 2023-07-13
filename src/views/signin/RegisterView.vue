@@ -107,6 +107,7 @@
 
 
 <script>
+import Swal from 'sweetalert2';
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, minLength, maxLength } from '@vuelidate/validators';
 import { reactive, computed } from 'vue';
@@ -166,17 +167,17 @@ export default {
       this.vc$.$validate();
 
       if (!this.vc$.$error && this.formData.password === this.formData.confirm) {
-        axios.post('https://acecraft-product-details.onrender.com/register', this.formData) //posting the registration details to json 
+        axios.post('http://localhost:3000/register', this.formData) //posting the registration details to json 
           .then(response => {
             console.log(response.data);
-            alert('Form submitted successfully');
+            Swal.fire('Form submitted successfully');
           })
           .catch(error => {
             console.error(error);
             alert('An error occurred while submitting the form');
           });
       } else {
-        alert('Form validations failed');
+        Swal.fire('Form validations failed');
       }
     }
   }

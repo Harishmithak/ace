@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+// import axios from 'axios';
+
 
 const routes = [
   {
@@ -37,7 +39,8 @@ const routes = [
   {
     path: '/school',
     name: 'school',
-    component: () => import('../views/school/SchoolView.vue')
+    component: () => import('../views/school/SchoolView.vue'),
+
   },
   {
     path: '/product',
@@ -53,7 +56,24 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: () => import('../views/cart/CartView.vue'),
+// beforeEnter(){
+//   axios
+//   .get('http://localhost:3000/register?login_like=1')
+//   .then(response => {
+//     const users = response.data;
 
+//     const login = users.find(login => login.login === 1);
+
+//     if (login) {
+//       this.$router.push('/cart');
+//     } else {
+//       this.$router.push('/login');
+//     }
+
+//   }
+//   )
+ 
+// },
 
 
   },

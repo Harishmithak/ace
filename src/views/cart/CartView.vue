@@ -79,8 +79,11 @@
 </template>
   
 <script>
+// import toast, { useToast } from 'vue3-toastify';
+// import 'vue3-toastify/dist/vue3-toastify.css';
 
 
+import Swal from 'sweetalert2';
 
 export default {
   name: 'cartView',
@@ -94,10 +97,11 @@ export default {
   mounted() {
     this.fetchcartData();
     this.invokeStripe();
+
   },
   methods: {
     fetchcartData() {
-      fetch('https://acecraft-product-details.onrender.com/cartItems') //fetch cart details
+      fetch('http://localhost:3000/cartItems') //fetch cart details
         .then((response) => response.json())
         .then((data) => {
           this.cartItems = data;
@@ -118,7 +122,7 @@ export default {
     },
     updateQuantityInJson(cart) {
       cart.cartItems.amount = this.calculateAmount(cart);
-      fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, { //update cart 
+      fetch(`http://localhost:3000/cartItems/${cart.id}`, { //update cart 
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -146,10 +150,28 @@ export default {
       );
     },
     removeFromCart(cart) {
+
+
+      Swal.fire({
+        icon: 'success',
+        text: 'Product removed from cart',
+        toast: true,
+        position: 'top-top',
+        showConfirmButton: false,
+        timer: 3000,
+        customClass: {
+          container: 'swal-top-container',
+       
+          
+        },
+      });
+    // const toast = useToast();
+    // toast.success('Success message');
+
       const index = this.cartItems.findIndex(item => item.id === cart.id);
       if (index !== -1) {
         this.cartItems.splice(index, 1);
-        fetch(`https://acecraft-product-details.onrender.com/cartItems/${cart.id}`, { //remove cart
+        fetch(`http://localhost:3000/cartItems/${cart.id}`, { //remove cart
         })
           .then((response) => {
             if (response.ok) {
@@ -215,6 +237,10 @@ export default {
   height: 280px;
   width: 300px;
 
+}
+
+.toast{
+  background-color: blueviolet;
 }
 
 .pdetails {

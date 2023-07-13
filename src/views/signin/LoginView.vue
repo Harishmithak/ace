@@ -34,7 +34,8 @@
   </div>
 </template>
 
-<script>
+<!-- <script>
+// import { mapMutations } from 'vuex';
 
 import axios from 'axios';
 export default {
@@ -47,9 +48,10 @@ export default {
     };
   },
   methods: {
+    // ...mapMutations(['setLoginStatus']),
     submitForm(event) { //checking the details with register 
       event.preventDefault();
-      axios.get('https://acecraft-product-details.onrender.com/register')
+      axios.get('http://localhost:3000/register')
         .then(response => {
           const users = response.data;
 
@@ -65,9 +67,9 @@ export default {
                 password: this.password
               };
               //posting the login details to json 
-              axios.post('https://acecraft-product-details.onrender.com/login', formData)
+              axios.post('http://localhost:3000/login', formData)
                 .then(() => {
-
+                  // this.setLoginStatus(true);
                   this.$router.push('/cart');
                 })
                 .catch(error => {
@@ -88,6 +90,11 @@ export default {
         .catch(error => {
           console.error('Error retrieving user data:', error);
         });
+
+
+
+
+
     },
 
 
@@ -95,7 +102,89 @@ export default {
   }
 };
 
+</script> -->
+<script>
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { mapActions } from 'vuex';
+
+export default {
+  name: 'loginView',
+  data() {
+    return {
+      username: '',
+      password: '',
+      errorMessage: ''
+    };
+  },
+  methods: {
+    ...mapActions(['login']),
+    submitForm(event) {
+      Swal.fire('login successfull');
+      event.preventDefault();
+
+      axios
+        .get('http://localhost:3000/register')
+        .then(response => {
+          const users = response.data;
+
+          const user = users.find(user => user.email === this.username);
+
+          if (user) {
+            if (user.password === this.password){
+
+      this.login()
+        .then(() => {
+       
+          this.$router.push('/cart');
+          Swal.fire('login successfull');
+        })}
+        
+      }
+   
+      })}
+  //   submitForm(event) {
+  //     Swal.fire('login successfull');
+  //     event.preventDefault();
+
+  //     axios
+  //       .get('http://localhost:3000/register')
+  //       .then(response => {
+  //         const users = response.data;
+
+  //         const user = users.find(user => user.email === this.username);
+
+  //         if (user) {
+  //           if (user.password === this.password) {
+  //             const formData = {
+  //               ...user, // Keep existing user data
+  //               login: 1 // Update the login status to 1 by default
+  //             };
+
+  //             axios
+  //               .put(`http://localhost:3000/register/${user.id}`, formData) // Use PUT request to update the user data
+  //               .then(() => {
+  //                 this.$router.push('/cart');
+  //               })
+  //               .catch(error => {
+  //                 console.error('Error updating user data:', error);
+  //                 this.errorMessage = 'An error occurred while updating user data. Please try again.';
+  //               });
+  //           } else {
+  //             this.errorMessage = 'Invalid password. Please try again.';
+  //           }
+  //         } else {
+  //           this.errorMessage = 'User not found. Please check your username.';
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.error('Error retrieving user data:', error);
+  //       });
+  //   }
+  // }
+}}
 </script>
+
 
 
 <style>

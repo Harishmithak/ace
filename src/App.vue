@@ -18,7 +18,8 @@ components:{
 </script>
 
 <template>
-<Nav> </Nav>
+<Nav> </Nav> 
+
 <router-view> </router-view>
 
 <Footer> </Footer>

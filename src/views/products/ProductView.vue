@@ -16,6 +16,7 @@
                         <span class="" style="color: grey; text-transform: lowercase; font-size: 15px; font-weight: 500">
                             <!-- length of the total products -->
                             -{{ this.sclproducts.length }} items
+
                         </span>
                     </button>
                 </div>
@@ -58,27 +59,19 @@
 </template>
 
 <script>
+
 export default {
+
     name: 'productView',
     data() {
         return {
-
             sclproducts: [],
-
-
-
-
         };
     },
     mounted() {
 
         this.fetchproductData();
     },
-
-
-
-
-
 
     methods: {
         fetchproductData() {
@@ -92,16 +85,8 @@ export default {
                 });
         },
 
-
-
-
-
-
     },
-
-
 }
-
 
 </script>
 

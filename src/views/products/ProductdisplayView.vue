@@ -62,32 +62,25 @@
 
             <br />
 
+    
+
             <div class="btn-group mt-5 ms-n3">
-                <button class="btn btn-sm" type="button"
-                    style="color: black; font-size: 14px; background-color: black; color: white; width: 100px; height: 34px; font-weight: 400;"
-                    @click="handleSizeSelect(sclproduct.size)">
-                    Size:
-                </button>
-                <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-                    aria-expanded="false" style="width: 150px; color: black; font-size: 15px;">
-                    <span class="visually-hidden">{{ selectedSize || sclproduct.size }}</span>
-                    <span v-if="selectedSize" style="margin-left: 5px;">{{ selectedSize || sclproduct.size }}</span>
-                </button>
-                <ul class="dropdown-menu mt-5 pt-5">
-                    <h5 style="color: black; font-weight: 500; font-size: 15px;">Please Select</h5>
-                    <li @click="handleSizeSelect('20')">20</li>
-                    <li @click="handleSizeSelect('22')">22</li>
-                    <li @click="handleSizeSelect('24')">24</li>
-                    <li @click="handleSizeSelect('26')">26</li>
-                    <li @click="handleSizeSelect('28')">28</li>
-                    <li @click="handleSizeSelect('30')">30</li>
-                    <li @click="handleSizeSelect('32')">32</li>
-                    <li @click="handleSizeSelect('34')">34</li>
-                    <li @click="handleSizeSelect('36')">36</li>
-                    <li @click="handleSizeSelect('38')">38</li>
-                    <li @click="handleSizeSelect('40')">40</li>
-                </ul>
-            </div>
+  <button class="btn btn-sm" type="button"
+    style="color: black; font-size: 14px; background-color: black; color: white; width: 100px; height: 34px; font-weight: 400;"
+    @click="handleSizeSelect(sclproduct.size)">
+    Size:
+  </button>
+  <button type="button" class="btn btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+    aria-expanded="false" style="width: 150px; color: black; font-size: 15px;">
+    <span class="visually-hidden">{{ selectedSize || sclproduct.size }}</span>
+    <span v-if="selectedSize" style="margin-left: 5px;">{{ selectedSize || sclproduct.size }}</span>
+  </button>
+  <ul class="dropdown-menu mt-5 pt-5">
+    <h5 style="color: black; font-weight: 500; font-size: 15px;">Please Select</h5>
+    <li v-for="size in sizes" :key="size" @click="handleSizeSelect(size)">{{ size }}</li>
+  </ul>
+</div>
+
             <br />
             <label for="quantity" :style="{ color: 'black', fontWeight: '500', fontSize: '15px' }">
                 Quantity:
@@ -136,11 +129,12 @@
 </template>
 
 <script>
-
+import Swal from 'sweetalert2'
 export default {
     name: 'productDisplay',
     data() {
         return {
+            sizes: ['20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40'],
             sclproduct: null,
             selectedSize: '',
             selectedQuantity: '1',
@@ -165,9 +159,9 @@ export default {
                     console.error('Error fetching product data:', error);
                 });
         },
-        navigateBack() {
-            this.$router.back();
-        },
+        // navigateBack() {
+        //     this.$router.back();
+        // },
 
         handleSizeSelect(size) {
             this.selectedSize = size;
@@ -203,7 +197,7 @@ export default {
 
 
         addToCart() {
-            console.log('Add to Cart button clicked');
+            // this.$swal('product added');
 
             const product = {
                 id: this.id,
@@ -225,7 +219,7 @@ export default {
             this.id++;
 
             this.saveCartItems();
-            window.alert('Product added to cart!');
+           Swal.fire('Product added to cart!');
         },
 
         saveCartItems() {

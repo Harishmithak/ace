@@ -11,7 +11,7 @@
         <div class="img-container">
 
             <h1 class="workwear">Workwear that Works</h1>
-            <h1><i className="fas fa-chevron-down "></i></h1>
+            <h1><i class="fas fa-chevron-down "></i></h1>
         </div>
 
         <div class="menapi">
