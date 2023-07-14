@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import store from '../store';
+import add from '../views/slot/SlotView.vue'
+import admin from '../views/admin/AdminView.vue'
 
 // import axios from 'axios';
 
@@ -87,12 +89,12 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('../views/admin/AdminView.vue')
+    component: admin,
   },
   {
     path: '/add',
     name: 'add',
-    component: () => import('../views/slot/SlotView.vue')
+    component: add,
   },
 
 ]

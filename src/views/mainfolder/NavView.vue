@@ -607,7 +607,7 @@ body {
   background-color: #f2f2f2;
 }
 .newadd{
-  margin-left: -100px;
+  margin-left: -150px;
 }
 #admin{
   color:#fff;
