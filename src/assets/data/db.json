@@ -741,21 +741,19 @@
   ],
   "cartItems": [
     {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
-        "prodname": "CIS Royal Day Wear (Grade 1-5)",
-        "prodcode": " NHISDWT20",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": "350.00",
-        "oprice": " ₹450",
-        "discount": "27%OFF",
-        "size": "20",
-        "quantity": 2,
-        "username": "harishmitha"
-      },
-      "id": 26
+      "id": 26,
+      "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
+      "prodname": "CIS Royal Day Wear (Grade 1-5)",
+      "prodcode": " NHISDWT20",
+      "brand": " ACECRAFT",
+      "soldby": "Alchemy",
+      "dprice": "350.00",
+      "oprice": " ₹450",
+      "discount": "27%OFF",
+      "size": "20",
+      "quantity": 2,
+      "username": "harishmitha",
+      "amount": 700
     },
     {
       "cartItems": {
