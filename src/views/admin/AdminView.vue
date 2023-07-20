@@ -88,7 +88,7 @@
 
 
                     </router-link>
-                    <button @click="editProduct()" class="edit">Edit</button>
+               <button @click="editProduct(scl)" class="edit">Edit</button>
                     <button @click="removeProduct(scl)" class="remove">Remove</button>
                 </div>
             </div>
@@ -99,6 +99,8 @@
 <script>
 import { ref, onMounted } from 'vue';
 import { useAddProduct, useRemoveProduct } from '/src/hooks/Composables.js';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 export default {
     name: 'productView',
@@ -134,6 +136,141 @@ export default {
         const removeProduct = useRemoveProduct(sclproducts);
 
 
+    //     const editProduct = (product) => {
+    //   Swal.fire({
+    //     title: 'Edit Product',
+    //     html: `
+    //       <form id="editProductForm">
+    //         <label for="editProductImg">Product Image:</label>
+    //         <input type="text" id="editProductImg" value="${product.sclproductimg}" required>
+    //         <br>
+    //         <label for="editProductName">Product Name:</label>
+    //         <input type="text" id="editProductName" value="${product.prodname}" required>
+    //         <br>
+    //         <label for="editProductCode">Product Code:</label>
+    //         <input type="text" id="editProductCode" value="${product.prodcode}" required>
+    //         <br>
+    //         <!-- Add other input fields for editing other product details as needed -->
+    //       </form>
+    //     `,
+    //     showCancelButton: true,
+    //     confirmButtonText: 'Update',
+    //     preConfirm: () => {
+    //       const updatedImg = document.getElementById('editProductImg').value;
+    //       const updatedName = document.getElementById('editProductName').value;
+    //       const updatedCode = document.getElementById('editProductCode').value;
+         
+    //       return {
+    //         sclproductimg: updatedImg.trim(),
+    //         prodname: updatedName.trim(),
+    //         prodcode: updatedCode.trim(),
+          
+    //       };
+    //     },
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       const updatedProduct = result.value;
+    //       if (updatedProduct.prodname !== '') {
+           
+    //         axios
+    //           .put(`http://localhost:3000/sclproducts/${product.id}`, updatedProduct)
+    //           .then(() => {
+    //             Swal.fire('Product updated successfully!', '', 'success');
+
+    //             fetchproductData();
+    //           })
+    //           .catch((error) => {
+    //             console.error('Error updating product:', error);
+    //             Swal.fire('Error updating product!', 'Please try again later.', 'error');
+    //           });
+    //       } else {
+    //         Swal.fire('Product name cannot be empty!', '', 'error');
+    //       }
+    //     }
+    //   });
+    // };
+    function editProduct(product) {
+  const taskToEdit = product;
+
+  Swal.fire({
+    title: 'Edit Product',
+    html: `
+      <label for="editProductImg">Product Image:</label>
+      <input type="text" id="editProductImg" value="${taskToEdit.sclproductimg}" required>
+      <br>
+      <label for="editProductName">Product Name:</label>
+      <input type="text" id="editProductName" value="${taskToEdit.prodname}" required>
+      <br>
+      <label for="editProductCode">Product Code:</label>
+      <input type="text" id="editProductCode" value="${taskToEdit.prodcode}" required>
+      <br>
+      <label for="editProductBrand">Brand:</label>
+      <input type="text" id="editProductBrand" value="${taskToEdit.brand}" required>
+      <br>
+      <label for="editProductSoldBy">Sold By:</label>
+      <input type="text" id="editProductSoldBy" value="${taskToEdit.soldby}" required>
+      <br>
+      <label for="editProductDiscountPrice">Discount Price:</label>
+      <input type="text" id="editProductDiscountPrice" value="${taskToEdit.dprice}" required>
+      <br>
+      <label for="editProductOriginalPrice">Original Price:</label>
+      <input type="text" id="editProductOriginalPrice" value="${taskToEdit.oprice}" required>
+      <br>
+      <label for="editProductDiscount">Discount:</label>
+      <input type="text" id="editProductDiscount" value="${taskToEdit.discount}" required>
+      <br>
+      <label for="editProductSize">Size:</label>
+      <input type="text" id="editProductSize" value="${taskToEdit.size}" required>
+      <br>
+      <label for="editProductQuantity">Quantity:</label>
+      <input type="text" id="editProductQuantity" value="${taskToEdit.quantity}" required>
+    `,
+    showCancelButton: true,
+    focusConfirm: false,
+    preConfirm: () => {
+      const updatedProduct = {
+        sclproductimg: document.getElementById('editProductImg').value,
+        prodname: document.getElementById('editProductName').value,
+        prodcode: document.getElementById('editProductCode').value,
+        brand: document.getElementById('editProductBrand').value,
+        soldby: document.getElementById('editProductSoldBy').value,
+        dprice: document.getElementById('editProductDiscountPrice').value,
+        oprice: document.getElementById('editProductOriginalPrice').value,
+        discount: document.getElementById('editProductDiscount').value,
+        size: document.getElementById('editProductSize').value,
+        quantity: document.getElementById('editProductQuantity').value,
+      };
+
+      return updatedProduct;
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const updatedProduct = result.value;
+
+     
+      const updatedProductId = product.id;
+      const productIndex = sclproducts.value.findIndex((p) => p.id === updatedProductId);
+
+      if (productIndex !== -1) {
+        sclproducts.value[productIndex] = {
+          ...sclproducts.value[productIndex],
+          ...updatedProduct,
+        };
+
+        
+        axios
+          .put(`http://localhost:3000/sclproducts/${updatedProductId}`, updatedProduct)
+          .then(() => {
+            Swal.fire('Product updated successfully!', '', 'success');
+          })
+          .catch((error) => {
+            console.error('Error updating product:', error);
+            Swal.fire('Error updating product!', 'Please try again later.', 'error');
+          });
+      }
+    }
+  });
+}
 
         onMounted(() => {
             fetchproductData();
@@ -145,6 +282,7 @@ export default {
             newProduct,
             addProduct,
             removeProduct,
+            editProduct,
 
         };
     },

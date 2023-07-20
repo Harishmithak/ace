@@ -1,9 +1,13 @@
 
 <!-- add to cart page -->
 <template>
-  <!-- retrieving from cartItems json -->
+
+
   <div>
+   
     <h1>Your bag total is: {{ calculateTotalBagAmount() }}</h1>
+
+
     <hr>
     <div>
       <div v-for="cart in cartItems" :key="cart.id">
@@ -26,7 +30,7 @@
           </div>
           <div class="col-2 amount ">
             <p class="bamt"> ₹ {{ calculateAmount(cart) }}</p>
-            <!-- remove cart -->
+
             <a href="#" @click="removeFromCart(cart)" class="crem">Remove</a>
           </div>
 
@@ -34,7 +38,7 @@
         <hr>
       </div>
     </div>
-  </div>
+  </div> 
 
 
   <div class="row">
@@ -79,11 +83,10 @@
 </template>
   
 <script>
-// import toast, { useToast } from 'vue3-toastify';
-// import 'vue3-toastify/dist/vue3-toastify.css';
 
-
+import { mapGetters } from 'vuex';
 import Swal from 'sweetalert2';
+
 
 export default {
   name: 'cartView',
@@ -99,12 +102,16 @@ export default {
     this.invokeStripe();
 
   },
+  computed: {
+    ...mapGetters(['userName']), 
+  },
   methods: {
     fetchcartData() {
       fetch('http://localhost:3000/cartItems') //fetch cart details
         .then((response) => response.json())
         .then((data) => {
-          this.cartItems = data;
+          this.cartItems = data.filter((item) => item.cartItems.username === this.userName);
+          // this.cartItems = data;
         })
         .catch((error) => {
           console.error('Error fetching cart data:', error);
@@ -161,12 +168,12 @@ export default {
         timer: 3000,
         customClass: {
           container: 'swal-top-container',
-       
-          
+
+
         },
       });
-    // const toast = useToast();
-    // toast.success('Success message');
+      // const toast = useToast();
+      // toast.success('Success message');
 
       const index = this.cartItems.findIndex(item => item.id === cart.id);
       if (index !== -1) {
@@ -239,7 +246,7 @@ export default {
 
 }
 
-.toast{
+.toast {
   background-color: blueviolet;
 }
 

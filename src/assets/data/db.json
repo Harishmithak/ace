@@ -743,88 +743,8 @@
     {
       "cartItems": {
         "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f798f04705ab2ca347bb/images/5aa0f798f04705ab2ca347bc/5aa0f79ff04705ab2ca347d7/webp/5aa0f79ff04705ab2ca347d7-480x480.jpg",
-        "prodname": "NHG Shirt [Girls, Grade 1-10]",
-        "prodcode": " NHISDWT",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": 340,
-        "oprice": " ₹450",
-        "discount": "24% OFF",
-        "size": "",
-        "quantity": 3
-      },
-      "id": 18
-    },
-    {
-      "cartItems": {
-        "id": 3,
         "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
         "prodname": "CIS Royal Day Wear (Grade 1-5)",
-        "prodcode": " NHISDWT",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": 340,
-        "oprice": " ₹450",
-        "discount": "24% OFF",
-        "size": "",
-        "quantity": 2
-      },
-      "id": 19
-    },
-    {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/627b614a77743f91a456432d/webp/front-view-nhg-shirt-girls-grade-11-12--480x480.jpg",
-        "prodname": "NHG County Shirt [Girls, Grade 11-12]",
-        "prodcode": " NHISDWT36",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": "350.00",
-        "oprice": " ₹450",
-        "discount": "27%OFF",
-        "size": "36",
-        "quantity": 2
-      },
-      "id": 20
-    },
-    {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d7044a72cc46b41ac7ca4/webp/hi-school-480x480.jpg",
-        "prodname": "CIS White Day Wear (Grade 9 & 10)",
-        "prodcode": " NHISDWT32",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": "350.00",
-        "oprice": " ₹450",
-        "discount": "27%OFF",
-        "size": "32",
-        "quantity": 2
-      },
-      "id": 21
-    },
-    {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
-        "prodname": "CIS Royal Day Wear (Grade 1-5)",
-        "prodcode": " NHISDWT34",
-        "brand": " ACECRAFT",
-        "soldby": "Alchemy",
-        "dprice": "350.00",
-        "oprice": " ₹450",
-        "discount": "27%OFF",
-        "size": "34",
-        "quantity": 2
-      },
-      "id": 22
-    },
-    {
-      "cartItems": {
-        "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f01491c2e5ab32f33869/images/5aa0f01491c2e5ab32f3386a/5aa0f01e91c2e5ab32f338a4/webp/5aa0f01e91c2e5ab32f338a4-480x480.jpg",
-        "prodname": "NHG Jumpers [Girls, Grade 1-4]",
         "prodcode": " NHISDWT20",
         "brand": " ACECRAFT",
         "soldby": "Alchemy",
@@ -832,41 +752,44 @@
         "oprice": " ₹450",
         "discount": "27%OFF",
         "size": "20",
-        "quantity": 2
+        "quantity": 2,
+        "username": "harishmitha"
       },
-      "id": 23
+      "id": 26
     },
     {
       "cartItems": {
         "id": 3,
-        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/601d6e74cbfb666ae1145869/webp/elementary-school-480x480.jpg",
-        "prodname": "CIS Royal Day Wear (Grade 1-5)",
-        "prodcode": " NHISDWT28",
+        "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f5c6f04705ab2ca345c6/images/5aa0f5c6f04705ab2ca345c7/5aa0f5d0f04705ab2ca345f9/webp/5aa0f5d0f04705ab2ca345f9-480x480.jpg",
+        "prodname": "NHG Shirt [Boys, Grade 1-10]",
+        "prodcode": " NHISDWT40",
         "brand": " ACECRAFT",
         "soldby": "Alchemy",
-        "dprice": "360.00",
+        "dprice": "350.00",
         "oprice": " ₹450",
-        "discount": "30%OFF",
-        "size": "28",
-        "quantity": 3
+        "discount": "27%OFF",
+        "size": "40",
+        "quantity": 3,
+        "username": "yamini"
       },
-      "id": 24
+      "id": 27
     },
     {
       "cartItems": {
         "id": 3,
         "sclproductimg": "https://cdn.storehippo.com/s/5997cc7c4d6e8ffa20e50aae/ms.products/5aa0f798f04705ab2ca347bb/images/5aa0f798f04705ab2ca347bc/5aa0f79ff04705ab2ca347d7/webp/5aa0f79ff04705ab2ca347d7-480x480.jpg",
         "prodname": "NHG Shirt [Girls, Grade 1-10]",
-        "prodcode": " NHISDWT22",
+        "prodcode": " NHISDWT20",
         "brand": " ACECRAFT",
         "soldby": "Alchemy",
         "dprice": "350.00",
         "oprice": " ₹450",
         "discount": "27%OFF",
-        "size": "22",
-        "quantity": 2
+        "size": "20",
+        "quantity": 1,
+        "username": "harishmitha"
       },
-      "id": 25
+      "id": 28
     }
   ],
   "register": [
@@ -899,13 +822,21 @@
       "gstnumber": "123456",
       "userType": "admin",
       "id": 2
-    }
-  ],
-  "login": [
+    },
     {
-      "username": "kharish@gmail.com",
+      "fname": "yamini",
+      "lname": "priya",
+      "email": "yamini@gmail.com",
       "password": "123456",
-      "id": 1
+      "confirm": "123456",
+      "accountType": "school",
+      "dealershipName": "yamini priya",
+      "dealershipCode": "123456",
+      "city": "Coimbatore",
+      "state": "Tamilnadu",
+      "gstnumber": "123456",
+      "userType": "user",
+      "id": 3
     }
   ]
 }

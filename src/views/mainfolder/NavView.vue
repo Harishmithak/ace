@@ -1,79 +1,81 @@
-<!-- navbar -->
-
-<!-- <template>
-  
-  <div class='navbarfull col-lg-12 col-md-12 col-sm-12 col-xl-12 fixed-top'>
-    <router-link class='titlename' to="/">acecraft</router-link>
 
 
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" to="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<template>
+  <div class="navbarfull col-lg-12 col-md-12 col-sm-12 col-xl-12 fixed-top">
+    <router-link class="titlename" to="/">acecraft</router-link>
+    <div class="newadd">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" to="#"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <div v-if="isLoggedIn && userType === 'user'" id="user1">
+                <router-link to="" class="nav-link " id="welcome-text">Welcome, {{ userName }}</router-link>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <router-link to="/school" class="nav-link" id="school">SCHOOL</router-link>
+              </div>
 
-            <router-link class="nav-link" id="college" to="/college">COLLEGE</router-link>
-            <router-link class="nav-link" id="enterprise" to="/enterprise">ENTERPRISE</router-link>
-            <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
-            <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link> -->
+              <div v-if="isLoggedIn && userType === 'admin'">
+                <router-link class="nav-link" id="admin" to="/admin">ADMIN</router-link>
+              </div>
+              <router-link to="/school" class="nav-link" id="school">SCHOOL</router-link>
+              <router-link class="nav-link" id="college" to="/college">COLLEGE</router-link>
+              <router-link class="nav-link" id="enterprise" to="/enterprise">ENTERPRISE</router-link>
+              <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
+              <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link>
 
-            <!-- settings icon   -->
-
-            <!-- <div class="setting" @mouseenter="showSettings = true" @mouseleave="showSettings = false">
-              <li class="companymenuli">
-                <a class="alisting">
-                  <i class="fas fa-cog"></i>
-                  <b class="caret"></b>
-                </a>
-                <ul class="ullist" v-show="showSettings">
-                  <router-link   style="color: #978F8F; text-decoration: none;" to="/login">
-                    <li id="sign-in">Sign In &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
-                  </router-link>
-                  <router-link  style="color: #978F8F; text-decoration: none;" to="/register">
-                    <li id="register">Register &nbsp; | <i class="fa-solid fa-user-plus"></i> </li>
-                  </router-link>
-                  <a style="color: #978F8F; text-decoration: none;">
-                    <li id="order-status">Order Status &nbsp;</li>
+              <div class="setting" @mouseenter="showSettings = true" @mouseleave="showSettings = false">
+                <li class="companymenuli">
+                  <a class="alisting">
+                    <i class="fas fa-cog"></i>
+                    <b class="caret"></b>
                   </a>
-                  <a style="color: #978F8F; text-decoration: none;">
-                    <li id="contact">Contact &nbsp; | <i class="fas fa-comments"></i></li>
-                  </a>
-                  <a style="color: #978F8F; text-decoration: none;">
-                    <li id="contact">Logout &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
-                  </a>
-                </ul>
-              </li>
+                  <ul class="ullist" v-show="showSettings">
+                    <li @click="handleLogout()">
+                      <a style="color: #978F8F; text-decoration: none;">
+                        <i class="fa-solid fa-right-to-bracket"></i> Logout
+                      </a>
+                    </li>
+
+                    <router-link style="color: #978F8F; text-decoration: none;" to="/login">
+                      <li id="sign-in">Sign In &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
+                    </router-link>
+                    <router-link style="color: #978F8F; text-decoration: none;" to="/register">
+                      <li id="register">Register &nbsp; | <i class="fa-solid fa-user-plus"></i> </li>
+                    </router-link>
+                    <a style="color: #978F8F; text-decoration: none;">
+                      <li id="order-status">Order Status &nbsp;</li>
+                    </a>
+                    <a style="color: #978F8F; text-decoration: none;">
+                      <li id="contact">Contact &nbsp; | <i class="fas fa-comments"></i></li>
+                    </a>
+                  </ul>
+                </li>
+              </div>
+
+              <span @click="goToShoppingCart">
+
+                <i class="fas fa-shopping-cart"></i>
+              </span>
+
+              <span class="badge badge-light">{{ cartItemCount }}</span>
             </div>
-
-
-            <span @click="goToShoppingCart">
-  <i class="fas fa-shopping-cart"></i>
-</span>
-
-
-
-
-
-            <span class="badge badge-light">{{ lastCartItemId }}
-           </span>
-
           </div>
         </div>
-      </div>
-    </nav>
-
+      </nav>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { mapActions } from 'vuex';
+import { mapState } from 'vuex';
 import { mapGetters } from 'vuex';
 export default {
   name: 'navbarView',
@@ -81,7 +83,6 @@ export default {
     return {
       showSettings: false,
       lastCartItemId: '',
-      login
 
     };
   },
@@ -89,130 +90,10 @@ export default {
     this.fetchCartItems();
     setInterval(this.fetchCartItems, 2000);
   },
-
-  methods: {
-    toggleSettings() {
-      this.showSettings = !this.showSettings;
-    },
-    fetchCartItems() {
-      axios.get('https://acecraft-product-details.onrender.com/cartItems') 
-        .then(response => {
-          const cartItems = response.data;
-          this.lastCartItemId = cartItems.length;
-        })
-        .catch(error => {
-          console.error('Failed to fetch cart items:', error);
-        });
-    },
-  
-
-    goToShoppingCart() {
-
-
-      if(this.login==true){
-        this.$router.push('/cart');
-      }
-      else{
-        this.$router.push('/login');
-      }
-    
-    },
-
-
-  },
-  computed: {
-    ...mapGetters(['isAuthenticated']),
-  },
-
-};
-</script> --> 
-
-<template>
-  <div class="navbarfull col-lg-12 col-md-12 col-sm-12 col-xl-12 fixed-top">
-    <router-link class="titlename" to="/">acecraft</router-link>
-<div class="newadd">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" to="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <div v-if="isLoggedIn && userType === 'admin'">
-            <router-link class="nav-link" id="admin" to="/admin">ADMIN</router-link> </div>
-            <router-link to="/school" class="nav-link" id="school">SCHOOL</router-link>
-            <router-link class="nav-link" id="college" to="/college">COLLEGE</router-link>
-            <router-link class="nav-link" id="enterprise" to="/enterprise">ENTERPRISE</router-link>
-            <router-link class="nav-link notes" id="notes" to="/notes">NOTES</router-link>
-            <router-link class="nav-link" id="areamask" to="/arien">ARIEN MASK</router-link>
-            <!-- <div v-if="isLoggedIn && userType === 'admin'"> -->
-           
-    <!-- </div> -->
-
-            <div class="setting" @mouseenter="showSettings = true" @mouseleave="showSettings = false">
-              <li class="companymenuli">
-                <a class="alisting">
-                  <i class="fas fa-cog"></i>
-                  <b class="caret"></b>
-                </a>
-                <ul class="ullist" v-show="showSettings">
-                  <li @click="handleLogout()">
-                    <a style="color: #978F8F; text-decoration: none;">
-                      <i class="fa-solid fa-right-to-bracket"></i> Logout
-                    </a>
-                  </li>
-
-                  <router-link style="color: #978F8F; text-decoration: none;" to="/login">
-                    <li id="sign-in">Sign In &nbsp; | <i class="fa-solid fa-right-to-bracket"></i></li>
-                  </router-link>
-                  <router-link style="color: #978F8F; text-decoration: none;" to="/register">
-                    <li id="register">Register &nbsp; | <i class="fa-solid fa-user-plus"></i> </li>
-                  </router-link>
-                  <a style="color: #978F8F; text-decoration: none;">
-                    <li id="order-status">Order Status &nbsp;</li>
-                  </a>
-                  <a style="color: #978F8F; text-decoration: none;">
-                    <li id="contact">Contact &nbsp; | <i class="fas fa-comments"></i></li>
-                  </a>
-                </ul>
-              </li>
-            </div>
-
-            <span @click="goToShoppingCart">
-       
-              <i class="fas fa-shopping-cart"></i>
-            </span>
-
-            <span class="badge badge-light">{{ lastCartItemId }}</span>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
-</template>
-
-<script>
-import axios from 'axios';
-import Swal from 'sweetalert2';
-// import { mapGetters, mapMutations } from 'vuex';
-import {  mapActions } from 'vuex';
-import { mapState } from 'vuex';
-export default {
-  name: 'navbarView',
-  data() {
-    return {
-      showSettings: false,
-      lastCartItemId: '',
-
-    };
-  },
-  created() {
-    this.fetchCartItems();
-    setInterval(this.fetchCartItems, 2000);
+  mounted() {
+    console.log('isLoggedIn:', this.isLoggedIn);
+    console.log('userType:', this.userType);
+    console.log('userName:', this.userName);
   },
 
   methods: {
@@ -222,106 +103,67 @@ export default {
       Swal.fire('logout successfull');
       this.logout()
         .then(() => {
-          // Handle successful logout, e.g., redirect to login page
+         
           this.$router.push('/login');
         })
         .catch(error => {
           console.error('Logout error:', error);
-          // Handle logout error
+       
         });
     },
     toggleSettings() {
       this.showSettings = !this.showSettings;
     },
+    // fetchCartItems() {
+    //   axios
+    //     .get('https://acecraft-product-details.onrender.com/cartItems')
+    //     .then(response => {
+    //       const cartItems = response.data;
+    //       this.lastCartItemId = cartItems.length;
+    //     })
+    //     .catch(error => {
+    //       console.error('Failed to fetch cart items:', error);
+    //     });
+    // },
     fetchCartItems() {
       axios
-        .get('https://acecraft-product-details.onrender.com/cartItems')
-        .then(response => {
+        .get('http://localhost:3000/cartItems')
+        .then((response) => {
           const cartItems = response.data;
-          this.lastCartItemId = cartItems.length;
+          const userName = this.userName; 
+          const userCartItems = cartItems.filter(
+            (item) => item.cartItems.username === userName
+          );
+          this.lastCartItemId = userCartItems.length;
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Failed to fetch cart items:', error);
         });
     },
     goToShoppingCart() {
       this.$router.push('/cart');
-      // if (this.isLoggedIn) {
-      //   this.$router.push('/cart');
-      // } else {
-      //   this.$router.push('/login');
-      // }
-      // else{
-      //   this.$router.push('/login');
-      // }
 
-      // axios
-      //   .get('http://localhost:3000/register?login_like=1')
-      //   .then(response => {
-      //     const users = response.data;
-
-      //     const login = users.find(login => login.login === 1);
-
-      //     if (login) {
-      //       this.$router.push('/cart');
-      //     } else {
-      //       this.$router.push('/login');
-      //     }
-
-      //   }
-      //   )
     },
 
-    // ...mapActions(['logout']),
-    // logout() {
-    //   this.logout()
-    //     .then(() => {
-    //       this.$router.push('/login');
-    //     })
-    //     .catch(error => {
-    //       console.error('Logout error:', error);
-    //     });
-    // },
-    // logout() {
-    //   fetch("http://localhost:3000/register?login_like=1")
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       console.log(data);
-    //       if (data.length > 0) {
-    //         const id = data[0].id;
-    //         fetch(`http://localhost:3000/register/${id}`, {
-    //           method: "PUT",
-    //           headers: {
-    //             "Content-Type": "application/json",
-    //           },
-    //           body: JSON.stringify({
-    //             ...data[0],
-    //             login: 0,
-    //           }),
-    //         })
-    //           .then(() => {
-    //             this.$router.push("/login");
-    //           })
-    //           .catch((error) => {
-    //             console.error("Error:", error);
-    //           });
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       console.error("Error:", error);
-    //     });
-    // }
 
   },
+  // computed: {
+
+  //   ...mapState(['isLoggedIn', 'userType', 'user']),
+  //   ...mapGetters(['isLoggedIn', 'userType', 'userName']),
+  //   cartItemCount() {
+  //     return this.lastCartItemId;
+  //   },
+  // },
   computed: {
-    // ...mapGetters(['isLoggedIn'])
-    ...mapState(['isLoggedIn', 'userType'])
-  }
+    ...mapState(['isLoggedIn', 'userType', 'user']),
+    ...mapGetters(['userName']),
+    cartItemCount() {
+      return this.lastCartItemId;
+    },
+  },
 }
 
-  // computed: {
-  //   ...mapGetters(['isAuthenticated'])
-  // }
 
 </script>
 
@@ -606,10 +448,16 @@ body {
 .setting ul li a:hover {
   background-color: #f2f2f2;
 }
-.newadd{
+
+.newadd {
   margin-left: -150px;
 }
-#admin{
-  color:#fff;
+
+#admin {
+  color: #fff;
+
+}
+#welcome-text{
+  color: #fff;
 }
 </style>

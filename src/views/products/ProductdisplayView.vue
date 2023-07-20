@@ -129,6 +129,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import Swal from 'sweetalert2'
 export default {
     name: 'productDisplay',
@@ -147,10 +149,13 @@ export default {
         this.fetchProductData();
 
     },
+    computed: {
+        ...mapGetters(['userName']), 
+    },
     methods: {
         fetchProductData() {
             const id = this.$route.params.id;
-            fetch(`http://localhost:3000/sclproducts/${id}`) //fetching details from sclproducts based on id
+            fetch(`http://localhost:3000/sclproducts/${id}`) 
                 .then((response) => response.json())
                 .then((data) => {
                     this.sclproduct = data;
@@ -198,7 +203,7 @@ export default {
 
         addToCart() {
             // this.$swal('product added');
-
+            const loggedInUsername = this.userName;
             const product = {
                 id: this.id,
                 sclproductimg: this.sclproduct.sclproductimg,
@@ -211,7 +216,7 @@ export default {
                 discount: this.sclproduct.discount,
                 size: this.selectedSize,
                 quantity: parseInt(this.selectedQuantity),
-
+                username: loggedInUsername,
             };
 
             this.cartItems = product;

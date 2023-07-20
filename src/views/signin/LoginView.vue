@@ -43,7 +43,7 @@
 </template>
 
 
-<script>
+<!-- <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { mapActions } from 'vuex';
@@ -75,17 +75,17 @@ export default {
           if (user) {
             if (user.password === this.password ){
 
-      // this.login()
+
       this.login(this.userType)
         .then(() => {
           
-          // Swal.fire('login successfull as user');
+
 
           if (this.userType==='user' && user.userType==='user' ) {
           this.$router.push('/cart');
         }
         else if(this.userType==='admin' && user.userType==='admin' ) {
-          // Swal.fire('login successfull as user');
+
  
                     this.$router.push('/admin');
                   }
@@ -97,6 +97,58 @@ export default {
       })}
 
 }}
+</script> -->
+// LoginView.vue
+
+<script>
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { mapActions } from 'vuex';
+
+export default {
+  name: 'loginView',
+  data() {
+    return {
+      username: '',
+      password: '',
+      errorMessage: '',
+      userType: 'user'
+    };
+  },
+  methods: {
+    ...mapActions(['login']),
+    submitForm(event) {
+      Swal.fire('login successful');
+      event.preventDefault();
+
+      axios.get('http://localhost:3000/register').then(response => {
+        const users = response.data;
+        const user = users.find(user => user.email === this.username);
+
+        if (user && user.password === this.password) {
+          const userData = {
+            userType: this.userType,
+            fname: user.fname
+          };
+
+          this.login(userData)
+            .then(() => {
+              if (this.userType === 'user' && user.userType === 'user') {
+                this.$router.push('/cart');
+              } else if (this.userType === 'admin' && user.userType === 'admin') {
+                this.$router.push('/admin');
+              }
+            })
+            .catch(error => {
+              console.error('Login error:', error);
+            });
+        } else {
+          this.errorMessage = 'Invalid username or password';
+        }
+      });
+    }
+  }
+};
 </script>
 
 
